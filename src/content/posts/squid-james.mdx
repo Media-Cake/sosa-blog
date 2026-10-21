@@ -1,0 +1,163 @@
+---
+title: Squid James
+slug: squid-james
+date: 2021-10-18T17:58:31.000Z
+modified: 2021-10-18T17:58:32.000Z
+author: james
+image: /wp-content/uploads/2021/10/squidjames.jpg
+thumbnail: /wp-content/uploads/2021/10/squidjames-500x320.jpg
+categories:
+  - updates
+  - tech
+  - community
+  - rebuild
+tags:
+  - sosa
+  - privacy
+  - backend
+  - architecture
+  - life
+description: Hi, it's me James again :) A lot has happened since the last blog
+  update so this is a bit of a long one, buckle up, grab you popcorn and I hope
+  you enjoy
+excerpt: Hi, it’s me James again 🙂 A lot has happened since the last blog
+  update so this is a bit of a long one, buckle up, grab you popcorn and I hope
+  you enjoy the read James x Privacy The main focus at the moment for SoSa is
+  getting the Privacy setting’s in place. I...
+---
+
+Hi, it’s me James again 🙂
+
+A lot has happened since the last blog update so this is a bit of a long one, buckle up, grab you popcorn and I hope you enjoy the read
+
+James x
+
+## Privacy
+
+The main focus at the moment for SoSa is getting the Privacy setting’s in place. I want Privacy to take priority on SoSa 2.0, I believe that you should have full control over your data and who can see it.
+
+So we’ve been working for the last few months to try and really nail down something that’s both flexible and easy to use.
+
+[![](/wp-content/uploads/2021/10/image-1024x563.png)](/wp-content/uploads/2021/10/image.png)
+
+What you’re seeing here is just the profile screen designs, on a very basic level these let you show a field, a post, a meetup etc to
+
+- Anyone
+- Only Your Friends
+- Only yourself
+
+But you can also create custom filters which will allow you to show only to certain age groups, people in certain locations, people in the same communities as you etc.
+
+I’ve developed the above on the mobile side too, and I’m just building out the backend to support this, there’s a lot of complexity that goes in to something like this but I think I will have it done in the next Sprint.
+
+## Backend
+
+[![](/wp-content/uploads/2021/10/image-3-1024x320.png)](/wp-content/uploads/2021/10/image-3.png)
+
+The last year taught me some valuable lessons about collaboration, the company I worked for struggled to hire a backend developer and so I was left to my own devices to architect and develop the backend.
+
+When we managed to get a backend developer in, it was obvious what I had built, worked – it didn’t make much sense to new people coming in.
+
+I tend to avoid third party libraries where possible, to reduce dependencies and make it easier for things to scale but that comes with some trade offs.
+
+There were things that I could have done to make that easier for other developers.
+
+I want other developers to be able to work on SoSa and so I’ve taken that feedback on board and started addressing those things in SoSa’s backend.
+
+![](/wp-content/uploads/2021/10/image-1.png)
+
+I spent some time simplifying a lot of the code and aiming for a backend that’s self documenting.
+
+Also, i’ll be looking at switching to typescript and get a head start on testing, automation testing and implement some logging to make production debugging easier.
+
+### Architecture
+
+I’ve also been thinking more about the overall architecture, and I’m going to continue building communities so that they can be self contained on their own servers.
+
+[![](/wp-content/uploads/2021/10/35c53f7f-de6b-40b5-8e79-6db5431ac916-1024x589.png)](/wp-content/uploads/2021/10/35c53f7f-de6b-40b5-8e79-6db5431ac916.png)
+
+Originally, we were going to have essentially two separate clusters.
+
+1. **Auth Service**\
+   This is how you log in, this protects your credentials, authenticates you with SoSa and helps other servers in the network authenticate you
+2. **SoSa Service**\
+   This would be the bulk of SoSa, your profiles, your communities, chat, meetups – everything that makes SoSa, SoSa.
+
+This approach would see you logging in to the auth server, and then connecting to the “SoSa” server where you would access your communities.
+
+But, I want communities to customize the experience without resorting to “hacks” like bots. Something you see heavily on Reddit and Discord. But I hadn’t worked out how best to approach this.\
+\
+My original idea, would be that i’d build a whole plugin system allowing community owners to add their own code to the system and enable a custom experience, but that comes with serious security concerns and potential to compromise other communities.
+
+**Cue Approach #2**\
+Each community has it’s own Server.
+
+[![](/wp-content/uploads/2021/10/74057d65-0f0b-4202-9d51-606799582f6f-1024x559.png)](/wp-content/uploads/2021/10/74057d65-0f0b-4202-9d51-606799582f6f.png)
+
+This new approach, turns each community in to it’s own cluster of servers. As a user, you log in to the Auth Service, your device then logs in to the routing service which is a gate way to all your communities.
+
+The routing service also acts as a sort of oversee’er, to protect your data from rogue communities and as a gateway from the communities to your profile.
+
+This new approach allows me to spin up a community in isolation, test, add highly custom features all without effecting the rest of the communities.\
+\
+It also means that if Community 1 goes down – SoSa, Community 2 and Community 3 are still accessible.
+
+## Bot face
+
+[![Bot Face Figma Design](/wp-content/uploads/2021/10/botfacefigma-1024x731.png)](/wp-content/uploads/2021/10/botfacefigma.png)
+
+You probably remember [a few sprints ago](/sprint-19-slowly-fast/), I had the designer to design the website for Bot face! This was a website to compliment the [botface api](/sprint-15-wearing-my-heart-on-my-sleeve/) I built for [SoSa](https://sosa.net).
+
+During September, as I was looking for work, I needed something casual I could work on amidst 100s of recruiter calls (no exaggeration), so I decided to start building out the bot face website in React!
+
+Most of it is done now, it’s generating bot faces, it’s responsive etc but I wanted to keep the faces we already designed specific to SoSa.
+
+So the designer is designing some face parts that will work out to about 6500 possible combinations (excluding different colours), when done these will be available to people to use on their own websites, social profiles etc and then there will be a unique set which is only available to users of SoSa!
+
+## Lore
+
+The SoSa lore has unfortunately taken a backseat for the moment, the writer we were using is experiencing some personal issues, so i’ve agree’d to put it on hold for a while, they’re still really passionate about working on the project but life doesn’t always go to plan and I think we can all appreciate that.
+
+So for now – that’s on hold.
+
+## Life
+
+### House
+
+The house is coming along slowly but surely, I have to be out of my flat by the end of November and still have no floors or walls or barely any heating.
+
+So as you can imagine it’s a little stressful especially as I’m doing it all myself!
+
+![](/wp-content/uploads/2021/10/image-4-1024x587.png)
+
+For all the stress though, it is coming along and I’m now able to work on it 5 days a week which is hard work but rewarding. I should have most of the downstairs ready by the time I need to move 🤞
+
+### Work
+
+I’ve also started my new contract which is going well, I’ve been hired as a full stack engineer (React, C#, .net) to develop a new platform for a company integrating with their existing CRM.
+
+The work is enjoyable at the moment if a little chaotic but most importantly my mental health seems to be back in a good place and I feel like I have more control over my life
+
+### James
+
+I’m good to be honest, although life is a bit chaotic I’m finding time to work on SoSa, game, go to the gym. Working on the house is definitely good exercise and I’m really excited to actually live in what i’m creating.
+
+Once i’m in and the house is livable, I’ll be looking at some short breaks to take in 2022, I also want to start doing some community work to get me out of the house more, speaking to people and giving a little back too.
+
+Also shout out to OneLatte for sending me these goodies! You’re a sweetie
+
+![](https://lh3.googleusercontent.com/gKYajGIQpBEOfnQu37bbje2mUBhzQqtgRaz-dpA2EYLHhhxrgMoDlgdq2IiZkzACqeD2hzCREk4i_NKpcmaoh3V_Q6kWWM3xZL0tX1GTGT9WEQU-V-MmC1AsAn4hxKGL0of55bIdfrmJzR_aMuMSSUplb7--8_pjBfXQKv_89_8X7B049B-7eXyBOqoXN-h1sCl5ysez43SJdVUz6V8tMuKcUqn5F5tO5YxVpDWrgIKsXVfrh9jBGBg8gOFLK8ig7lHQYUGwv51smfL374AIBHXfOBP1JS3vChBfddbQBjvje8AMBFkrk7CDpwEWovnl1mH14dlEqbGg6t4byJWyAuvwDblcWbeQCyZ0vyRz7YI5G9O2XrP69NQrO87p8d7GVMe9zOmZroAyT1Kd7_vs4eAbdhfbYO_ZxzTVkLhBbg9xqe1fgZ64atz9Ze2MCn5BLsApU5evy7CiPvCdPqpfwYniJkbYB14JABgmIFfj1O7D7g-sQbqRbpREFlEhp4COUEcum4WveMQhrjARCkbqa_yUG4fgBO9P20RmblFOXinYu-82fYTrz5hFZEaZVYkEEjxWBNF37GTF3zSziWqVVQH57vSFaDLcwZbC15ArMOlXATQWd0PGSSuwXsAw9ThCcRvagqhjatasp0DpbdzSPnLQyADbn6nF_LIIll0qV4PEWPyLVwj6R6mFN8qWwbM81F7KfRPws2OYSQJV9-be9bam=w1920-h865-no?authuser=0)
+
+## Stats
+
+[LinkedIn](https://www.linkedin.com/company/sosa-community/) grew from 929 to 988\
+[Our Beta List](https://sosa.net/) grew from 427 to 441
+
+![](/wp-content/uploads/2021/10/image-5-1024x316.png)
+
+This sprint our Average position has gone down up 21.4 to 31.5! and click through is steady at 2%\
+Our total clicks (537 to 29) and total impressions (24.5k to 1.43k) have tanked so I’ll be looking in to what’s happened there.
+
+We did have a server die earlier in the month so it could be related
+
+Domain authority has gone down from 29 to 28.

@@ -1,0 +1,1 @@
+export { FeaturedImage } from './FeaturedImage';

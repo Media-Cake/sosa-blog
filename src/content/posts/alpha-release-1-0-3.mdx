@@ -1,0 +1,102 @@
+---
+title: Alpha Release 1.0.3
+slug: alpha-release-1-0-3
+date: 2020-06-21T14:44:35.000Z
+modified: 2020-06-21T14:47:08.000Z
+author: james
+image: /wp-content/uploads/2020/06/Release1.0.3-2.jpg
+thumbnail: /wp-content/uploads/2020/06/Release1.0.3-2-500x320.jpg
+categories:
+  - updates
+  - tech
+  - rebuild
+tags:
+  - bots
+  - design
+  - imgur
+  - reddit
+  - multi-line
+  - users
+  - bugs
+description: Because releases are now getting bigger and more frequent, it's
+  getting a bit confusing having a single article that contains everything so
+  it's time to
+excerpt: Because releases are now getting bigger and more frequent, it’s getting
+  a bit confusing having a single article that contains everything so it’s time
+  to separate out the posts. This one will be for release changes and there will
+  be a normal one for the other work i’ve done during the sprint! Bots ok… so...
+---
+
+Because releases are now getting bigger and more frequent, it’s getting a bit confusing having a single article that contains everything so it’s time to separate out the posts.
+
+This one will be for release changes and there will be a normal one for the other work i’ve done during the sprint!
+
+### Bots
+
+ok… so I know not everyone likes a bot, but I think they’re cute!
+
+If you remember previous sprints, you’ll remember that our app is replaying old chat logs from 2014 that have been anonymised. 
+
+Those bots were all wayward, they didn’t have to log in, they couldn’t be kicked and generally they could just do whatever they wanted!
+
+So to keep those pesky bots in their place, I’ve now implemented bot authentication! 
+
+I might have gone a bit overboard… but the bots all have their own profiles, just like real users and have to authenticate with the server securely, so they are bound by all the rules any other user would be (meaning we can kick, ban, mute, you can also ignore them if you want)
+
+<figure className="aligncenter size-large"><a href="/wp-content/uploads/2020/06/Screenshot_1592215258.png"><img width="498" height="1024" src="/wp-content/uploads/2020/06/Screenshot_1592215258-498x1024.png" alt="The bots have been falling in love" /></a><figcaption>Look at them being all weird</figcaption></figure>
+
+### New Features
+
+#### Design update
+
+This is an ongoing thing, but I made a significant improvement on the chat area and navigation design this sprint. I’ve also started implementing a style guide which I’ll use across app and website.
+
+<figure className="aligncenter size-large"><a href="/wp-content/uploads/2020/06/designupdate-1-scaled.jpg"><img src="/wp-content/uploads/2020/06/designupdate-1-1024x1002.jpg" alt="Looking a bit sexier now!" /></a><figcaption>Looks a bit sexier now 🙂</figcaption></figure>
+
+#### Imgur + Reddit Login
+
+In release 1.0.2 you could login with username and password only, with release 1.0.3 you can now login with Imgur and Reddit.
+
+#### Icons!
+
+This might seem trivial, but one of the first things my testers noticed was the lack of an icon so now the app has an icon in both Android and iOS
+
+<figure className="aligncenter size-large"><a href="/wp-content/uploads/2020/06/icons.jpg"><img width="720" height="392" src="/wp-content/uploads/2020/06/icons.jpg" alt="" /></a><figcaption>Not actually sure what that little line under the O is on the left…</figcaption></figure>
+
+#### Multi-line support
+
+Ever wanted to send more than one line of text? Well! now you can! 
+
+![](/wp-content/uploads/2020/06/multiline-1-1024x529.jpg)
+
+#### User list
+
+I was getting bored looking at usernames, so i’ve added profile pictures to everyone and when you press their face – it’ll tag them 🙂
+
+![](/wp-content/uploads/2020/06/Screenshot_1592075485-498x1024.png)
+
+### Bug Fixes
+
+It wouldn’t be a release without bug fixes! 
+
+#### Keyboard no longer closes when you press “return”
+
+More of a stylistic choice but one that a few testers didn’t like, so i’ve changed the behaviour now and when you press return on the keyboard it no longer closes
+
+#### Navigation performance issues
+
+I suspect this will be an ongoing “fix” as we tweak it for different users, but for now it seems to be resolved and there’s no longer any lag when the navigation opens up
+
+#### Weird tag bugs
+
+If you tag James1 and James10 in the same message, the 2nd tag would break – i’ve fixed that now
+
+#### Keyboard stays open when you open a menu
+
+Minor issue, but if you started typing and then thought “oooo i’d love to see who’s online” the keyboard would stay open.
+
+That’s now fixed! 
+
+#### Left Navigation bugs
+
+I moved Logout / Disconnect to the bottom and also adjusted the room list so active rooms show as bold when you’re in them.

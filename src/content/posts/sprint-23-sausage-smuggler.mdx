@@ -1,0 +1,139 @@
+---
+title: Sprint 23 – Sausage Smuggler
+slug: sprint-23-sausage-smuggler
+date: 2020-12-06T16:15:24.000Z
+modified: 2020-12-06T16:15:25.000Z
+author: admin
+image: /wp-content/uploads/2020/12/shutterstock_1836003028_1.jpg
+thumbnail: /wp-content/uploads/2020/12/shutterstock_1836003028_1-500x320.jpg
+categories:
+  - updates
+  - rebuild
+tags:
+  - job
+  - comments
+  - game-night
+  - stats
+  - design
+  - website
+  - alpha
+  - faceface
+  - timeline
+  - errors
+description: Hello hello!  I’ve been thinking about you, I hope you’ve been
+  thinking about me too! You can ignore the title, I couldn't actually think of
+  one and
+excerpt: Hello hello! I’ve been thinking about you, I hope you’ve been thinking
+  about me too! You can ignore the title, I couldn’t actually think of one and
+  this jumped out at me as being the most appropriate. It’s been another great
+  sprint with lots of changes and great progress! Because I get started I
+  wanted...
+---
+
+Hello hello! 
+
+I’ve been thinking about you, I hope you’ve been thinking about me too!
+
+You can ignore the title, I couldn’t actually think of one and this jumped out at me as being the most appropriate.
+
+It’s been another great sprint with lots of changes and great progress!\
+\
+Because I get started I wanted to say thank you to Caroline for becoming our newest [Patron](https://www.patreon.com/sosa_community)! 
+
+## New Job!
+
+So as many of you know for the last 12 odd years I’ve been self employed, and the last 4 i’ve been a contractor.\
+\
+But on the 1st of December, I took a new job as CTO for a prop tech company just outside of Bristol!
+
+<figure className="aligncenter size-large is-resized"><a href="/wp-content/uploads/2020/12/shutterstock_343586636_1.jpg"><img src="/wp-content/uploads/2020/12/shutterstock_343586636_1-1024x678.jpg" alt="" width="512" height="339" /></a><figcaption>Me wearing my new work outfit</figcaption></figure>
+
+**What does this mean for SoSa?**
+
+Well mainly good things! having the stability and holidays that a perm job offers, it gives me much more free time to put into SoSa. 
+
+They understand how important SoSa is to me and have excluded it from my employment contract – meaning as long as I’m doing my day job properly I’m free to work on SoSa as much as I want.
+
+There is a slight downside of course… Now that i’m employed, although I will continue to self fund SoSa’s development, design etc, I do have less cash which just means I have to maintain a stricter budget and of course this is where support on [Patreon ](https://www.patreon.com/sosa_community)becomes much more important for building SoSa
+
+## Alpha Release 1.1.1
+
+I’d like to welcome Kira to the Alpha team! as last sprint, I’m going to start adding more people to Alpha to help smash out those bugs! If you’d like to get involved just let me know 🙂
+
+As before, a lot of work has been done for this release during this sprint so i’ll share what the Alpha testers are getting there and anything backend etc here!
+
+You can read more about what’s in this release here:
+
+<figure className="wp-block-embed-wordpress aligncenter wp-block-embed is-type-wp-embed is-provider-sosa"><div className="wp-block-embed__wrapper"><blockquote className="wp-embedded-content" dataSecret="jbEkz2jHJr"><a href="/alpha-release-1-1-1/">Alpha Release 1.1.1</a></blockquote><iframe className="wp-embedded-content" sandbox="allow-scripts" security="restricted" style={{"position":"absolute","clip":"rect(1px, 1px, 1px, 1px)"}} title="“Alpha Release 1.1.1” — SoSa" src="/alpha-release-1-1-1/embed/#?secret=jbEkz2jHJr" dataSecret="jbEkz2jHJr" width="500" height="282" marginWidth="0" marginHeight="0" scrolling="no" /></div></figure>
+
+## SoSa 2.0 Timeline
+
+Now that things are progressing quicker, I’ve got more life stability and more testers are getting involved. I’m hoping that we can get SoSa into beta for next Feb / March and go live by the end of the year.
+
+Obviously anything can happen between now and then! but i’m fairly confident that we can get SoSa live next year! 🥳
+
+## Website Design
+
+With development ramping up, I’ve shifted our designers focus on to designing the members area of SoSa, with we’ll be wrapped up early next year and moving on to the app design!
+
+## Face Face
+
+[![](/wp-content/uploads/2020/12/image-6-1024x454.png)](/wp-content/uploads/2020/12/image-6.png)
+
+This has been moving forward, ignore the pink – this is so i can replace the colours on the fly without having to map every single asset (it’s a very specific RGB)
+
+There are over 6500 variations for every alien and human and then 6500 for each skin tone.
+
+My main feedback was that too many look depressed / sad / angry, which as a generated profile picture isn’t a great feeling, especially if you’re already feeling a bit shit!
+
+So the designer has made some changes (which I’ll check out this week) but here’s the last round!
+
+## Error handling
+
+Something that keeps popping up is that  are that some areas of the app / website have multiple errors for a single screen! Meetups is a great example, the title, description and start / end dates could all be wrong.
+
+<figure className="aligncenter size-large"><a href="/wp-content/uploads/2020/12/image-7.png"><img width="449" height="922" src="/wp-content/uploads/2020/12/image-7.png" alt="Going back in time is frowned upon" /></a><figcaption>Going back in time is frowned upon</figcaption></figure>
+
+We’ve all seen those websites where it’ll show you one error at a time, so you hit save it says “Title’s invalid”, you fix it, hit save again and it tells you “Descriptions invalid” – rinse and repeat.
+
+I wanted to avoid this on SoSa, it’s a weird anti pattern so i built the backend to be able to deliver multiple error messages or just one!
+
+[![Further proof I have no idea what i'm doing](/wp-content/uploads/2020/12/image-8.png)](/wp-content/uploads/2020/12/image-8.png)
+
+## Comments
+
+Previous sprints, comments inside the app were all faked! they didn’t exist, there was no way to add more / reply / cuddle them – whatever you kids do with comments.
+
+So this sprint I added a basic comments service to the API, backing database and parsed it through the message parsers.
+
+I’ll need to update this later, mainly to generalize the message parsers to support multiple types of content.
+
+Comments are currently only working for meetups – but I’ve built it around the concept of an entity, so anything can have comments attached, meetups, profiles, discussions, cats whatever you please!
+
+## Game night
+
+[![](/wp-content/uploads/2020/12/image-9.png)](/wp-content/uploads/2020/12/image-9.png)
+
+Our last [SoSa](https://sosa.net) game night of 2020 will be WitchIt! We’ll restart in January 2021 🙂
+
+Sunday 13th December 1900-2100 GMT / 1200-1400 PT / 1500-1700 ET
+
+It’s time once again for Boob and belly physics and we delve into the world of WitchIt!
+
+The game recently had an update and we had so much fun playing last time around figured it was time to play again!
+
+[https://www.eventbrite.co.uk/e/sosa-gamenight-witch-it-tickets-130246198887](https://www.eventbrite.co.uk/e/sosa-gamenight-witch-it-tickets-130246198887)
+
+## Stats
+
+[LinkedIn](https://www.linkedin.com/company/sosa-community/) grew from 810 to 828\
+[Patreon](https://www.patreon.com/sosa_community), We gained another Patron this Sprint bringing us to 16!\
+Shout out to Caroline for becoming a Patreon this sprint!\
+[Our Beta List](https://sosa.net/) grew from 388 to 391
+
+This sprint our Average position went down from 22.8 to 23.5!\
+Impressions are down from 3.4k to 2.96k and Click through is down again slightly from 2.3% to 2.2!
+
+[![](/wp-content/uploads/2020/12/image-10.png)](/wp-content/uploads/2020/12/image-10.png)
+
+Domain authority is up to 29 from 27!

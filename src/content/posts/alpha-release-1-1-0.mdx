@@ -1,0 +1,65 @@
+---
+title: Alpha Release 1.1.0
+slug: alpha-release-1-1-0
+date: 2020-11-23T11:08:38.000Z
+modified: 2020-11-23T12:07:00.000Z
+author: admin
+image: /wp-content/uploads/2020/11/release-1.1.0.jpg
+thumbnail: /wp-content/uploads/2020/11/release-1.1.0-500x320.jpg
+categories:
+  - updates
+  - rebuild
+tags:
+  - meetups
+  - alpha
+  - chat-history
+description: Here's a video to check out the app and all these changes in real
+  time :) https://youtu.be/5lZWjNTbHoA Firstly! Welcome Jelle and Peter to the
+  Alpha team!
+excerpt: Here’s a video to check out the app and all these changes in real time
+  🙂 Firstly! Welcome Jelle and Peter to the Alpha team! That’s right ladies and
+  gentlefolk! we’ve moved up a whole minor version! Only 9 more to go… Meetups
+  In the last few updates we saw the meetups interface in place...
+---
+
+Here’s a video to check out the app and all these changes in real time 🙂
+
+<figure className="wp-block-embed-youtube wp-block-embed is-type-video is-provider-youtube wp-embed-aspect-16-9 wp-has-aspect-ratio wp-embed-aspect-4-3"><div className="wp-block-embed__wrapper"><iframe title="SoSa - Alpha Release 1.1.0" width="500" height="375" src="https://www.youtube.com/embed/5lZWjNTbHoA?feature=oembed" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen /></div></figure>
+
+Firstly! Welcome Jelle and Peter to the Alpha team!
+
+That’s right ladies and gentlefolk! we’ve moved up a whole minor version! Only 9 more to go…
+
+## Meetups
+
+In the last few updates we saw the meetups interface in place but none of that was attached to the server, you couldn’t create a meetup and all the meetups that were being shown were hard coded in to the app.
+
+Well – that’s all changed!
+
+<figure className="aligncenter size-large is-resized"><a href="/wp-content/uploads/2020/11/image.jpeg"><img src="/wp-content/uploads/2020/11/image-1021x1024.jpeg" alt="Who's cat's are we meeting exactly?" width="766" height="768" /></a></figure>
+
+I started with Meetup creation and went through a few revisions. We’re going to be designing all these area’s properly at some stage so for now it’s just got a basic design and fundamental UX to be able to test it.
+
+After that, I integrated the main meetups area and the meetups view – as well as properly linking the screens.
+
+I still have “attendees” and “comments” to integrate, so I’ve left the hard coded stuff in there for now
+
+<figure className="aligncenter size-large is-resized"><a href="/wp-content/uploads/2020/11/image-1.jpeg"><img src="/wp-content/uploads/2020/11/image-1-1021x1024.jpeg" alt="Meetups Integrated" width="766" height="768" /></a></figure>
+
+## Chat History
+
+I’ve now implemented chat history, including message saving and retrieval when you join a room. I go into this in a bit more technical detail in the other post but the result is that this version of the app now shows history when you join the chat room 🙂
+
+<figure className="aligncenter size-large is-resized"><a href="/wp-content/uploads/2020/11/image-2.jpeg"><img src="/wp-content/uploads/2020/11/image-2-1021x1024.jpeg" alt="Bots talking nonsense" width="766" height="768" /></a></figure>
+
+## Bug Fix / Upgrade – Navigation
+
+So i thought I fixed this last sprint, but apparently those sneaky Alpha testers found other ways around it – the back button!
+
+I’ve not only fixed the back button bug, but I’ve added additional checks and balances to hopefully prevent it from being a future issue.
+
+I’ve also implemented some changes to the navigation handling so hopefully my custom navigation bar works a bit more seamlessly!
+
+## Bug Fix – Reconnect
+
+With all the upgrades of the framework, it meant that the app wasn’t reconnecting if it got disconnected by the server going offline. I’ve fixed this now too and it also rejoins the room you’re in.

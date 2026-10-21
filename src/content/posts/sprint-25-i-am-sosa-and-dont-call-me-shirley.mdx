@@ -1,0 +1,124 @@
+---
+title: Sprint 25 – I am SoSa and don’t call me Shirley
+slug: sprint-25-i-am-sosa-and-dont-call-me-shirley
+date: 2021-01-31T15:57:05.000Z
+modified: 2021-01-31T15:57:05.000Z
+author: admin
+image: /wp-content/uploads/2021/01/image.jpg
+thumbnail: /wp-content/uploads/2021/01/image-500x320.jpg
+categories:
+  - updates
+  - gaming
+  - rebuild
+tags:
+  - game-night
+  - patreon
+  - stats
+  - proptypes
+  - context
+  - functional-components
+  - environment-variables
+description: Oh hai! wow it’s been forever hasn’t it? But guess what! it’s
+  update time again so i hope you’re ready to read me talk utter nonsense for 5
+  minutes.
+excerpt: Oh hai! wow it’s been forever hasn’t it? But guess what! it’s update
+  time again so i hope you’re ready to read me talk utter nonsense for 5
+  minutes. Firstly, thank you for IamSprots for becoming our latest Patreon! If
+  you would like to support what I’m building and get some an inside look +...
+---
+
+Oh hai! wow it’s been forever hasn’t it? But guess what! it’s update time again so i hope you’re ready to read me talk utter nonsense for 5 minutes.
+
+Firstly, thank you for IamSprots for becoming our latest [Patreon](https://www.patreon.com/sosa_community)! If you would like to support what I’m building and get some an inside look + some extras when we launch [SoSa](https://sosa.net) this year then head over to [Patreon](https://www.patreon.com/sosa_community)!
+
+[![](/wp-content/uploads/2021/01/image-692x1024.png)](/wp-content/uploads/2021/01/image.png)
+
+## So what’s the plan?
+
+Well my plan this year is to go live, I’m working closely with some designers to make that a reality and we’re ploughing through building the UI and UX before we make it pretty.
+
+We’ve got a lot of features to build in so we’re working hard to try and make it as simple as possible whilst maintaining that flexibility that I really want the platform to have.
+
+There was always going to be an underlying game element to the platform and not that Discord is putting a heavier emphasis on Communities and Bebo is returning, I want SoSa to be a truly unique experience and I’ll be putting a bit more effort into world building and how the social and game side merge.
+
+## Release
+
+There is no release this sprint, I spent a lot of time chasing a weird bug with Samsung UI 3.0 with Android 11, and introducing nice to haves (like environment variables, a local server, build scripts etc)
+
+There will be a release next sprint but I’ll go through what i’ve worked on this sprint 🙂
+
+## Game night
+
+[![](/wp-content/uploads/2021/01/image-1-1024x568.png)](/wp-content/uploads/2021/01/image-1.png)
+
+The next [SoSa](https://sosa.net) game night will be [Stowaway](https://store.steampowered.com/app/1428470/Stowaway/)!  This was TheSire’s idea so I have no idea what’s going on
+
+Sunday 21st February 1900-2100 GMT / 1200-1400 PT / 1500-1700 ET
+
+Stowaway is a find the impostor style game set in the 1500s on a pirate ship. There are two teams in Stowaway: the “Sailors” and the “Stowaways”. The Stowaways are given a pistol at the beginning of the round and are tasked with killing all the sailors before the ship reaches land.
+
+[https://www.eventbrite.co.uk/e/sosa-gamenight-stowaway-tickets-139198629849](https://www.eventbrite.co.uk/e/sosa-gamenight-stowaway-tickets-139198629849)
+
+## PropTypes
+
+When I started working with React Native, I didn’t have much experience with building a react application from scratch, the last year I’ve had to work very heavily with React for my full time job and so there are some standards that we employ that I really like.
+
+One of those things is [PropTypes](https://www.npmjs.com/package/prop-types).
+
+[![](/wp-content/uploads/2021/01/image-2.png)](/wp-content/uploads/2021/01/image-2.png)
+
+For those who don’t know, PropTypes allows you to define what properties a component needs / accepts making it a lot easier to keep consistency and clean code as well as supporting speedy development
+
+So i’ve gone through almost every component and added them, hopefully this will also make it easier in the long term for other developers to pick up and work with!
+
+## Context, React Hooks and Functional components
+
+Another thing that i’ve gotten used to are Context, React hooks and functional components so i’ve been slowly working through all of my screens and components and converting them into something much more manageable.
+
+Moving things like API interaction, Authentication, Routing all to context, Changing all components to functional components and using Hooks where appropriate.
+
+I should be done with this today / tomorrow and then I can focus on development of features
+
+## Environment Variables
+
+Another thing that’s pretty common in most systems are environment variables. These allow you to have different configurations based on the environment you’re software is running in.
+
+This is particularly helpful with build and test pipelines because it allows the pipeline to control it instead of having it hard coded somewhere.
+
+For the App – this can mean a few scenarios 
+
+1. Development environment
+2. Production environment
+3. Hybrid environment
+
+So I spent time building and testing single command scripts that would allow me to build the App with a specific environment and launch it on the emulator / simulator
+
+[![](/wp-content/uploads/2021/01/image-3-1024x100.png)](/wp-content/uploads/2021/01/image-3.png)
+
+I ran into a few problems with the way React’s bundler reads the environment and found that it would cache a lot of the build files, which isn’t helpful if I want to switch between two different environments during testing.
+
+> _`set APP_ENV=production&& npx react-native bundle --platform android --dev true --reset-cache --entry-file index.js --bundle-output android/app/src/main/assets/index.android.bundle --assets-dest android/app/src/main/res && npx react-native run-android`_,
+
+As you can see, it’s a bit over the top but this basically clears the bundler cache and rebuilds a bundle then launches it against the emulator.
+
+For the backend – This was a LOT easier but I did have to build a parser to facilitate the level of complexity I wanted from a configuration file.
+
+[![](/wp-content/uploads/2021/01/image-4-1024x853.png)](/wp-content/uploads/2021/01/image-4.png)
+
+This was mostly pretty easy, just needed a bit of working through but it all worked out 🙂
+
+## Stats
+
+[LinkedIn](https://www.linkedin.com/company/sosa-community/) grew from 834 to 851\
+[Patreon](https://www.patreon.com/sosa_community), We gained another Patron this Sprint bringing us to 16!\
+Shout out to IamSprots for becoming a Patreon this sprint!
+
+[Our Beta List](https://sosa.net/) grew from 391 to 398
+
+[![](/wp-content/uploads/2021/01/image-5.png)](/wp-content/uploads/2021/01/image-5.png)
+
+This sprint our Average position went up from 23.5 to 22.7!\
+\
+Impressions are up from 2.96k to 3k and Click through is up again slightly from 2.2% to 2.4!
+
+Domain authority is holding steady at 28!

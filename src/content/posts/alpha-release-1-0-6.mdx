@@ -1,0 +1,64 @@
+---
+title: Alpha Release 1.0.6
+slug: alpha-release-1-0-6
+date: 2020-08-16T13:46:32.000Z
+modified: 2020-08-16T13:46:33.000Z
+author: james
+image: /wp-content/uploads/2020/08/Release1.0.6.jpg
+thumbnail: /wp-content/uploads/2020/08/Release1.0.6-500x320.jpg
+categories:
+  - updates
+  - rebuild
+tags:
+  - meetups
+  - facebook
+  - design
+  - bugs
+  - alpha
+  - settings
+description: After a short break, i'm back to creating releases every sprint,
+  this first one is a little small but we'll pick up momentum with each sprint
+  again :) New
+excerpt: After a short break, i’m back to creating releases every sprint, this
+  first one is a little small but we’ll pick up momentum with each sprint again
+  🙂 New Stuff Facebook Login Alpha team should now be able to login to the app
+  with Facebook, to avoid privacy issues we’re not integrating with the SDK...
+---
+
+After a short break, i’m back to creating releases every sprint, this first one is a little small but we’ll pick up momentum with each sprint again 🙂
+
+## New Stuff
+
+### Facebook Login
+
+Alpha team should now be able to login to the app with Facebook, to avoid privacy issues we’re not integrating with the SDK and instead opting for the oAuth 2.0 flow
+
+[![Facebook login doesn't use the SDK to ensure it remains secure](/wp-content/uploads/2020/08/Login-1-1024x1002-1.png)](/wp-content/uploads/2020/08/Login-1-1024x1002-1.png)
+
+### Meetups
+
+Now that I’m moving in to non-chat features, this release includes the Meetups screen, all the data is dummy data for the minute but the interface should be functional.
+
+[![Simple meetups area](/wp-content/uploads/2020/08/Meetups-1-1024x1002-1.png)](/wp-content/uploads/2020/08/Meetups-1-1024x1002-1.png)
+
+## Menu Update
+
+Exactly what it says on the tin! Nothing amazing but some slight visual changes to bring it in line with other areas
+
+[![](/wp-content/uploads/2020/08/Screenshot_1597517062-498x1024.png)](/wp-content/uploads/2020/08/Screenshot_1597517062.png)
+
+## Bug Fixes
+
+### Social Logins can’t be pressed multiple times quickly
+
+Previously, our naughty Alpha testers could repeatedly bash a social login button and it would keep opening browser windows. I’ve fixed that now
+
+### Dark Mode iOS makes text white
+
+This one was a bit of an obscure bug, but for any iOS 13 users with Dark Mode enabled, text inputs would have white text (i guess because it’s automatically trying to adapt but not accounting for fixed colours)
+
+That should be resolved this update
+
+### When Setting “Show profile On touch” not working correctly
+
+When a user turns on this setting and then presses on a bots face, they get a full screen popup which they can’t close. This was a bug with the handler and has now been resolved.

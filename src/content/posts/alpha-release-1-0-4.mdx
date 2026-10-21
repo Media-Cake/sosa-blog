@@ -1,0 +1,102 @@
+---
+title: Alpha Release 1.0.4
+slug: alpha-release-1-0-4
+date: 2020-07-05T14:27:02.000Z
+modified: 2020-07-05T14:27:36.000Z
+author: james
+image: /wp-content/uploads/2020/07/Release1.0.4.jpg
+thumbnail: /wp-content/uploads/2020/07/Release1.0.4-500x320.jpg
+categories:
+  - updates
+  - rebuild
+tags:
+  - javascript
+  - apps
+  - bugs
+  - 1-0-4
+  - tagging
+  - buckets
+  - arrays
+  - spam
+description: New Features Tagging Have you ever been in a chat room full of bots
+  all creatively named and thought to yourself “How do I tag Bot10”? Well, if
+  you’ve
+excerpt: New Features Tagging Have you ever been in a chat room full of bots all
+  creatively named and thought to yourself “How do I tag Bot10”? Well, if you’ve
+  followed previous releases, you would know you could press their face. Or,
+  even press them in the user list but sometimes – that’s a lot of...
+---
+
+## New Features
+
+### Tagging
+
+Have you ever been in a chat room full of bots all creatively named and thought to yourself “How do I tag Bot10”?
+
+Well, if you’ve followed previous releases, you would know you could press their face. Or, even press them in the user list but sometimes – that’s a lot of effort!
+
+So this sprint, I made it so you can @ them and it’ll give you all the bots names that match what you’re typing, but also you can press on their username to tag them!
+
+<figure className="aligncenter size-large is-resized"><a href="/wp-content/uploads/2020/07/Screenshot_1593871938.png"><img src="/wp-content/uploads/2020/07/Screenshot_1593871938-996x1024.png" alt="Future SoSa will be entirely filled with bots" width="498" height="512" /></a><figcaption>Future SoSa will be entirely filled with bots</figcaption></figure>
+
+### Message Pruning
+
+This is technically a bug waiting to happen (but hasn’t happened yet because no one has noticed it) so I’m calling it a feature and we’ll pretend it was never going to be a bug!
+
+Anyway! When a message comes in it get’s stored in an array of messages which is like a bucket of water, except all the water molecules are stacked on top each other.
+
+Infact, that’s a silly analogy! imagine the butterfly… you know what, forget it – you’ll just have to take my word for it.
+
+Anyway, in theory our bucket can never get full but in reality there are restrictions such as your phone memory. The bigger that bucket get’s with all it’s water, the less space it has to grow in!
+
+<figure className="aligncenter size-large"><a href="/wp-content/uploads/2020/07/scientificmethods.jpg"><img width="512" height="341" src="/wp-content/uploads/2020/07/scientificmethods.jpg" alt="Dogs are secretly actually the brightest scientific minds of our generation" /></a><figcaption>Dogs are secretly actually the brightest scientific minds of our generation</figcaption></figure>
+
+The world around it literally starts tearing down because there are other buckets with even more water trying to exist at the same time, eventually reality starts to caves in on itself, the bucket can’t get any bigger but we’re still adding water. 
+
+If that continues, it’ll start being hard to scroll, or send a message – messages will appear to come in slower and slower. Our batteries will drain faster and even other apps will come across as being slow.
+
+Sooo… I added messaging pruning! which means when our bucket has 100 or more messages in it, we’ll start by pruning the first 50 (the oldest) in our bucket.
+
+### Spam Protection
+
+I won’t name any names, but in the last few releases I’ve had a right pain in the ass testing the app for me. We’ll call him Probably Matt.
+
+Probably Matt has a habit of sending too many messages at once! and Often with too much content! He’s very naughty!
+
+<figure className="aligncenter size-large is-resized"><img src="/wp-content/uploads/2020/07/Screenshot_1593274233-498x1024.png" alt="Probably Matt is a Nuisance and Matt Matt is a child" width="249" height="512" /><figcaption>Probably Matt is a Nuisance and Matt Matt is a child</figcaption></figure>
+
+So to protect our poor defenceless bots from his onslaught of messages, I’ve added a sending limit, with a burn down that increases with every message they send – meaning if they keep trying to send messages when they’re not allowed to they could be waiting for hours before it’ll send.
+
+Also! I’ve restricted messages to 1000 characters. I’m not sure if this is the best limit, it felt natural to me but we’ll have a play and see how we get on I think.
+
+<figure className="aligncenter size-large is-resized"><a href="/wp-content/uploads/2020/07/CharacterLimit2-scaled.jpg"><img src="/wp-content/uploads/2020/07/CharacterLimit2-1024x526.jpg" alt="I secretly know primarily nonsense latin" width="1024" height="526" /></a><figcaption>I secretly know primarily nonsense latin</figcaption></figure>
+
+### Twitter Login!
+
+Last sprint, we introduced Imgur and Reddit logins, this time we’re introducing Twitter Login!
+
+## Bugs
+
+### Keyboard issues
+
+A couple of sprints ago, there were a bunch of iOS keyboard bugs including
+
+- Autocorrect text not being sent
+- Keyboard not closing when you press outside of it
+- Dictate functionality not working properly
+
+These have now all been fixed
+
+### Chat Reauth
+
+So you’ve been using the app for a little while now and your session has expired! Oh no! what will you do? Chat won’t respond, you don’t want to have to log out – you shouldn’t have to log out well never fear! that’s fixed now.
+
+We attempt to update your session first, and if that fails we throw you back to the login screen.
+
+### Users can no longer send blank message’s
+
+This is Probably Matt’s fault again, basically a user could send a blank message. Now… they can’t!
+
+### New User Button
+
+On the Login screen, that pesky new user button was hiding behind the keyboard on iOS! now it’s not!

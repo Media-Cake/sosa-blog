@@ -1,0 +1,29 @@
+.list {
+  list-style: none;
+}
+
+.sidebar {
+  margin: 1%;
+  padding: 1%;
+  padding-top: 1em;
+
+  .item {
+    display: inline-block;
+    width: 3em;
+  }
+
+  .heading {
+    width: 8em;
+  }
+}
+
+.contact {
+  .item {
+    display: inline-block;
+    width: 5em;
+  }
+}
+
+.item img {
+  width: 100%;
+}

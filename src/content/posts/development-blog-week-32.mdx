@@ -1,0 +1,60 @@
+---
+title: "Development Blog: Week 32"
+slug: development-blog-week-32
+date: 2017-11-13T22:35:27.000Z
+modified: 2017-11-13T22:35:27.000Z
+author: james
+image: /wp-content/uploads/2017/01/DevelopersBlog.jpg
+thumbnail: /wp-content/uploads/2017/01/DevelopersBlog-500x320.jpg
+categories:
+  - updates
+  - tech
+tags:
+  - updates
+  - chat
+  - push-notifications
+  - gcm
+  - fcm
+  - two-step
+  - pm-delay
+  - apn
+  - edit-profile
+  - view-profile
+description: Updates from 6th Nov - 13th Nov 2017 The iOS app is ready for the
+  store now! yay! and a brand new look and feel coming in the next 3 weeks.
+excerpt: Updates from 6th Nov – 13th Nov 2017 The iOS app is ready to be posted
+  to the store now! yay! I’m having some minor problems with the Facebook login
+  but that’ll be solved this week. Over the next three weeks, I am aiming to
+  have the website almost completely rebuilt. A new, modern bootstrapped...
+---
+
+Updates from 6th Nov – 13th Nov 2017
+
+The iOS app is ready to be posted to the store now! yay! 
+
+I’m having some minor problems with the Facebook login but that’ll be solved this week.
+
+Over the next three weeks, I am aiming to have the website almost completely rebuilt. A new, modern bootstrapped look and feel, much easier and customise-able interface, a single screen approach and a full newbie flow. This will solve a lot of problems we have with what is essentially a 3 year old layout + design and allow us to welcome new users through advertising 🙂
+
+I am really excited to show you what we have been working on and I hope you love the concept as much as us.
+
+Check out the last development blog [here](/development-blog-week-31/)
+
+## [Website / General](https://chatplayshare.com)
+
+- Investigated issue with PM’s and delayed notifications\
+  Turns out GCM / FCM are not designed to be used for instant communication and most apps like WhatsApp / Facebook use a socket / push notification hybrid so that’s added to my list.
+- Stopped notifications for content previews going to the apps (added filtering on sockets based on platform)
+- Continued with chat 2.0
+- Fixed two-step handshake so it doesn’t keep asking on the apps to verify their two-step (caching error)
+
+## iPhone App (Unreleased)
+
+- Added view profile screen
+- Added edit profile screen
+- Made user context menu universal
+- Finished integrating Push notifications
+- Added Welcome “First time” screen
+- Added two-step
+- Prepared for release
+- Battled with Facebook login dependencies

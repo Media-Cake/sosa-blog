@@ -1,0 +1,129 @@
+---
+title: Sprint 28 – a New Hope
+slug: sprint-28-a-new-hope
+date: 2021-03-15T13:41:22.000Z
+modified: 2021-03-15T13:42:25.000Z
+author: james
+image: /wp-content/uploads/2021/03/Untitled-1.jpg
+thumbnail: /wp-content/uploads/2021/03/Untitled-1-500x320.jpg
+categories:
+  - updates
+  - rebuild
+tags:
+  - sosa
+  - android
+  - apple
+  - pipelines
+  - gamenight
+  - stats
+  - crying
+  - more-crying
+description: Boy, do I have a story to tell. I started this sprint with best
+  intentions, i thought “Hey James, why don’t we get a release out and build it
+  using App
+excerpt: Boy, do I have a story to tell. I started this sprint with best
+  intentions, i thought “Hey James, why don’t we get a release out and build it
+  using App Center” boy… was that a mistake! For those not in the know, app
+  center is a platform run by Microsoft and it allows you...
+---
+
+Boy, do I have a story to tell.
+
+I started this sprint with best intentions, i thought “Hey James, why don’t we get a release out and build it using App Center” boy… was that a mistake!
+
+For those not in the know, app center is a platform run by Microsoft and it allows you to release your app to testers / to the store easily from a single place (without having to do it manually on each store)
+
+Usually, I would build the app locally and then upload it to app center to send to the test team – but I wanted to make the process easier.
+
+[![](/wp-content/uploads/2021/03/image-8-1024x172.png)](/wp-content/uploads/2021/03/image-8.png)
+
+It didn’t take long to get the build working for Android, but the moment I tried signing it (this is needed to install it on people’s phones properly) it would fail every time!
+
+[![](/wp-content/uploads/2021/03/image-9.png)](/wp-content/uploads/2021/03/image-9.png)
+
+This very useless error is apparently because App center includes a step “Zipalign” in their build process which is no longer used to sign apps!
+
+The problem is, that App center has a very prescribed build process that you can’t change so I had no way to remove this so I decided fuck it, I need to get this build out to our testers and decided to do it manually again (like i’ve done a million times before)
+
+## Apple strikes back
+
+[![](/wp-content/uploads/2021/03/image-10-1024x576.png)](/wp-content/uploads/2021/03/image-10.png)
+
+As you can probably tell from the title, this turned into my own personal dev hell! Things wouldn’t sign, when they would they wouldn’t run, when I finally got it to run it wouldn’t show anything! 
+
+At one point it would only build and run in debug mode but would white screen in production mode (which obviously I can’t debug because it’s not in debug mode!!!)
+
+The whole thing was a mess, so I gave up and moved on to Apple.
+
+[![](/wp-content/uploads/2021/03/image-11-1024x421.png)](/wp-content/uploads/2021/03/image-11.png)
+
+Sigh… so this is basically telling me that Apple don’t have a certificate available for me to sign my app with. Which is odd – because I’ve signed it using that account about a 1000 times.
+
+However after logging in to Apple the cause becomes apparent!
+
+[![](/wp-content/uploads/2021/03/image-12-1024x270.png)](/wp-content/uploads/2021/03/image-12.png)
+
+For those who don’t know, if you want to build a release for an iPhone app you need to have a developer account and pay a license fee once a year (it’s about $99) well, mine ran out in January and I wasn’t aware.
+
+So as you do, I went to login to the account and apparently the password I have saved doesn’t work any more. Like a normal person I decide to go through the reset password process.
+
+Here, I enter the e-mail, it then sends me a confirmation code. It then asks me to confirm my mobile number, and after it sends me another code to my mobile number before I can even start the reset process!
+
+Then I get this e-mail
+
+[![](/wp-content/uploads/2021/03/image-13.png)](/wp-content/uploads/2021/03/image-13.png)
+
+Yup. You read that right. After confirming I have access to both my mobile phone and email address – I now need to wait 13 days to reset my password!
+
+I’ve got an invoice, proof of purchase from last year. Exact dates, credit card details everything so I decide to contact their helpdesk
+
+[![](/wp-content/uploads/2021/03/image-14.png)](/wp-content/uploads/2021/03/image-14.png)
+
+Apparently they couldn’t help either! So I’m not actually able to build anything for iOS until I can reset. So back to building Android manually!
+
+## Return of the Pipelines
+
+[![](/wp-content/uploads/2021/03/image-15-1024x576.png)](/wp-content/uploads/2021/03/image-15.png)
+
+I’d pretty much wasted the sprint at this point, I can’t express how much time I spent on just trying to get a release build done – so I thought I may as well finish what I started.\
+\
+Firstly, I pulled in a fresh build of the app on a new system and managed to get a build out to the Alpha team!
+
+Next, I signed up for Gitlab and started working through building pipelines there
+
+[![](/wp-content/uploads/2021/03/image-16-1024x535.png)](/wp-content/uploads/2021/03/image-16.png)
+
+App was first up, and that didn’t actually take too long. Most of the problems I had was actually just storing the key securely and then signing locally.\
+\
+I set up a local mac mini to handle my builds and keep the JKS file on it so that it’s never public. Once I removed Zipalign – it was built with no problems at all.
+
+Then I thought, well i’m in this deep already may as well make the backed server deploying too!
+
+So anyway. I hope you enjoyed my Saga over the last two weeks
+
+## Game night
+
+![](/wp-content/uploads/2021/03/image-17.png)
+
+Next[ SoSa](https://sosa.net) game night we will be doing Team fortress 2!
+
+Sunday 4th April 1900-2100 GMT / 1200-1400 PT / 1500-1700 ET
+
+Time to teach those naughty robots who’s boss, join us in our fight against this hive of scum and villainy in this free multiplayer FPS.
+
+Nothing to buy this time, just download and install!
+
+[https://www.eventbrite.co.uk/e/sosa-plays-team-fortress-2-tickets-146349201401](https://www.eventbrite.co.uk/e/sosa-plays-team-fortress-2-tickets-146349201401)
+
+## Stats
+
+[LinkedIn](https://www.linkedin.com/company/sosa-community/) grew from 880 to 884\
+[Our Beta List](https://sosa.net/) grew from 404 to 408
+
+[![](/wp-content/uploads/2021/03/image-18.png)](/wp-content/uploads/2021/03/image-18.png)
+
+This sprint our Average position has gone up again! going from 25.1 to 22.4!\
+\
+Impressions are up from 3.08k to 3.26k and Click through is down again slightly from 2.5% to 2.4!
+
+Domain authority is back up to 29!

@@ -1,0 +1,27 @@
+@font-face {
+  font-family: 'koch_geometricregular';
+  src:
+    url('../fonts/kochgeometric_book_macroman/KochGeometric-Book-webfont.woff2')
+      format('woff2'),
+    url('../fonts/kochgeometric_book_macroman/KochGeometric-Book-webfont.woff')
+      format('woff'),
+    url('../fonts/kochgeometric_book_macroman/KochGeometric-Book-webfont.ttf')
+      format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'koch_geometricmedium';
+  src:
+    url('../fonts/kochgeometric_medium_macroman/KochGeometric-Medium-webfont.woff2')
+      format('woff2'),
+    url('../fonts/kochgeometric_medium_macroman/KochGeometric-Medium-webfont.woff')
+      format('woff'),
+    url('../fonts/kochgeometric_medium_macroman/KochGeometric-Medium-webfont.ttf')
+      format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}

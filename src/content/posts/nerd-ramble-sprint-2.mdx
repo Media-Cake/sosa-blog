@@ -1,0 +1,231 @@
+---
+title: Sprint 2 – Nerd Ramble
+slug: nerd-ramble-sprint-2
+date: 2020-01-22T09:34:12.000Z
+modified: 2020-03-15T15:50:50.000Z
+author: james
+image: /wp-content/uploads/2020/01/banner2.jpg
+thumbnail: /wp-content/uploads/2020/01/banner2-500x320.jpg
+categories:
+  - updates
+  - tech
+  - rebuild
+tags:
+  - javascript
+  - chat
+  - chat-server
+  - chat-client
+  - jenkins
+  - slack
+description: "This is a technical post going into depth about the work i’ve done
+  in the last sprint, if you’re looking for my general update you can check it
+  out:"
+excerpt: "This is a technical post going into depth about the work i’ve done in
+  the last sprint, if you’re looking for my general update you can check it out:
+  here If you’re not up to date and you’ve stumbled on this post through my shit
+  posting everywhere You can see the previous posts: Precursor Sprint..."
+---
+
+This is a technical post going into depth about the work i’ve done in the last sprint, if you’re looking for my general update you can check it out: [here](/sosa-the-ummm-foundations/) 
+
+If you’re not up to date and you’ve stumbled on this post through my shit posting everywhere You can see the previous posts:
+
+1. [Precursor](/sosa-precursor/)
+2. [Sprint 1 – The Foundations](/sosa-the-foundations/)
+3. [Sprint 2 – The ummm Foundations?](/sosa-the-ummm-foundations/)
+4. Sprint 2 – Nerd Ramble
+5. [Sprint 3 – Cooking with matches!](/cooking-with-matches/)
+6. [Sprint 4 – Now We’re Cooking With Gas!](/sprint-4-now-were-cooking-with-gas/)
+7. [Sprint 5 – Robot Uprising](/sprint-5-robot-uprising/)
+8. [This Is Not the Sprint You’re Looking For](/this-is-not-the-sprint-youre-looking-for/)
+9. [Sprint 6 – That’s a Weird Looking Patronus](/sprint-6-thats-a-weird-looking-patronus/)
+10. [Sprint 7 – Corona Stole My Title](/sprint-7-corona-stole-my-title/)
+11. [Sprint 8 – Adventure Time!](/sprint-8-adventure-time/)
+12. [Sprint 9 – Now In Technicolor](/sprint-9-now-in-technicolor/)
+13. [Sprint 10 – Refinement](/sprint-10-refinement/)
+14. [Sprint 11 – Motion In The Ocean](/sprint-11-motion-in-the-ocean/)
+15. [Alpha Release 1.0.3](/alpha-release-1-0-3/)
+16. [Sprint 12 – No Rest For The Wicked](/sprint-12-no-rest-for-the-wicked/)
+17. [Alpha Release 1.0.4](/alpha-release-1-0-4/)
+18. [Sprint 13 – I Need a Break](/sprint-13-i-need-a-break/)
+19. [Alpha Release 1.0.5](/alpha-release-1-0-5/)
+20. [Sprint 14 – Just James Things](/sprint-14-just-james-things/)
+21. [Sprint 15 – Wearing My Heart On My Sleeve](/sprint-15-wearing-my-heart-on-my-sleeve/)
+22. [Alpha Release 1.0.6](/alpha-release-1-0-6/)
+23. [Sprint 16 – Warm Up](/sprint-16-warm-up/)
+24. [Alpha Release 1.0.7](/alpha-release-1-0-7/)
+25. [Sprint 17 – Coffee’s back on the menu!](/sprint-17-coffees-back-on-the-menu/)
+26. [Alpha Release 1.0.8](/alpha-release-1-0-8/)
+27. [Sprint 18 – We’re on fire!](/sprint-18-were-on-fire/)
+28. [Sprint 19 – Slowly fast](/sprint-19-slowly-fast/)
+29. [Sprint 20 – Let’s get Nerdy](/sprint-20-lets-get-nerdy/)
+30. [Alpha Release 1.0.9](/alpha-release-1-0-9/)
+31. [Sprint 21 – We’re back!](/sprint-21-were-back/)
+32. [Alpha Release 1.1.0](/alpha-release-1-1-0/)
+33. [Sprint 22 – You Look Cute Today](/sprint-22-you-look-cute-today/)
+34. [Alpha Release 1.1.1](/alpha-release-1-1-1/)
+35. [Sprint 23 – Sausage Smuggler](/sprint-23-sausage-smuggler/)
+36. [A SoSa Retrospective](/a-sosa-retrospective/)
+37. [Sprint 25 – I am SoSa and don’t call me Shirley](/sprint-25-i-am-sosa-and-dont-call-me-shirley/)
+38. [Sprint 26 – The best laid schemes of mice and men](/sprint-26-the-best-laid-schemes-of-mice-and-men/)
+39. [Sprint 27 – Vogue, Strike a Pose](/sprint-27-vogue-strike-a-pose/)
+40. [Sprint 28 – a New Hope](/sprint-28-a-new-hope/)
+41. [I Couldn’t Think Of a Title](/i-couldnt-think-of-a-title/)
+42. [Guess who’s back, Back again!](/guess-whos-back-back-again/)
+43. [Demolition Man](/demolition-man/)
+44. [Squid James](/squid-james/)
+45. [I AM STILL ALIVE](/i-am-still-alive/)
+46. [We Didn’t Choose This Life, We’re Just Living In It](/we-didnt-choose-this-life-were-just-living-in-it/)
+47. [Let’s go!](/lets-go/)
+
+Tech stuff can be dry at times, so I’ll add pictures, colours, maybe some explosions – keep it interesting.
+
+I will also over explain so non-techies can understand better, it’ll still be very technical but at-least if you’re interested in learning it won’t be completely off limits!
+
+<figure className="aligncenter size-large"><img width="700" height="494" src="/wp-content/uploads/2020/01/shutterstock_1116285596_1.jpg" alt="" /><figcaption>Are you ready for some excitement?!?</figcaption></figure>
+
+## Chat Client
+
+This is the software that will run in your web browser, phone, toaster etc and connects to our chat servers, letting you talk shit and share memes all day 🙂
+
+This sprint, my goal was to isolate the event handler from the core code to make it easier for a developer to extend it.
+
+The event handler basically tells your browser / app / toaster how to react to events from the server. Eg if you receive a “message” should your browser
+
+1. Show the message it to you, the user.\
+   or
+2. Explode
+
+<figure className="aligncenter size-large"><img width="700" height="467" src="/wp-content/uploads/2020/01/shutterstock_408095707_1.jpg" alt="Exploding chat message" /><figcaption>An exploding message</figcaption></figure>
+
+The biggest problem with trying to build a unified code base is that some implementations will need access to more events than others, so hard coding how events are handled the handler in the ChatClient class doesn’t make sense.
+
+**ChatEventHandler** class handles events and the rest is hard coded in the **ChatClient** class.
+
+A few languages support something called [Reflection](https://en.wikipedia.org/wiki/Reflection_\(computer_programming\)), this allows us to analyze how a class is implemented, this is commonly used to identify any annotations used in the code or expose available methods to another part of the codebase. 
+
+<figure className="aligncenter size-large is-resized"><a href="/wp-content/uploads/2020/01/chatgclientevent.jpg"><img src="/wp-content/uploads/2020/01/chatgclientevent-1024x458.jpg" alt="ChatEventHandler and ChatClient Code" width="768" height="344" /></a><figcaption>The original code</figcaption></figure>
+
+Using Reflection would allow future developers to focus on development and not how I’ve implemented things behind the scenes. Makes development quicker, easier to understand and easier to test.\
+\
+Effectively abstracting the two and result in self documenting code.
+
+Having never tried to use reflection in Javascript, I didn’t know if it was viable. I know ES6, ES7 and so on have introduced some cool new features so I did some Googling and came across this: [https://flaviocopes.com/how-to-list-object-methods-javascript](https://flaviocopes.com/how-to-list-object-methods-javascript)
+
+<figure className="aligncenter size-large"><a href="/wp-content/uploads/2020/01/getprototype.png"><img width="582" height="204" src="/wp-content/uploads/2020/01/getprototype.png" alt="" /></a><figcaption>Get Methods Code</figcaption></figure>
+
+Not quite what I need! But would at-least allow me to all the methods on my classes prototype and then I should be able to use those to define my events.
+
+<figure className="aligncenter size-large"><a href="/wp-content/uploads/2020/01/chrom1.jpg"><img width="696" height="455" src="/wp-content/uploads/2020/01/chrom1.jpg" alt="ChatEventHandler prototype methods" /></a><figcaption>ChatEventHandler prototype methods</figcaption></figure>
+
+Unfortunately, when I implemented and ran it in Chrome, i got the prototype inherited from the Object class, which makes sense because everything extends that.
+
+![](/wp-content/uploads/2020/01/getmethodsObject.jpg)
+
+<figure className="aligncenter size-large"><a href="/wp-content/uploads/2020/01/chrom2.jpg"><img width="689" height="297" src="/wp-content/uploads/2020/01/chrom2.jpg" alt="" /></a><figcaption>Object’s prototype!</figcaption></figure>
+
+With a slight change, I can get all of Object’s methods to and then remove these from my array so the result will be all the events I want to handle.
+
+There was a huge flaw in my otherwise genius plan! … private methods. 
+
+Code needs to be readable and where possible self documenting, this makes it really easy for other developers to pick up in the future and can make it easier to find bugs. 
+
+When a method is too long, it can be hard to digest and the complexity gets lost, so i’ll typically break down long methods into smaller ones where appropriate or where i’m going to reuse code. 
+
+If I’m automatically getting all my event handlers just from the code with Javascript, I don’t know the difference between what should be an event and what should just be a helper!
+
+That could have unintended consequences and as the code base grows could create some interesting bugs…
+
+<figure className="aligncenter size-large"><img width="700" height="467" src="/wp-content/uploads/2020/01/shutterstock_1310532416_1.jpg" alt="Pouting gorilla" /><figcaption>Hmmmph!</figcaption></figure>
+
+What I need are private or protected methods, classes were only introduced into Javascript in ES6 so I needed to do some research.
+
+I came across was this article by Philip Walton:
+
+[https://philipwalton.com/articles/implementing-private-and-protected-members-in-javascript/](https://philipwalton.com/articles/implementing-private-and-protected-members-in-javascript/)
+
+It does goes into a few ways to define “private” methods using javascript or at least limit methods scopes
+
+Some really good ideas, but unless a developer uses them on a regular basis they won’t think to solve the problem in that way and instead will solve their problem using common solutions.
+
+For our use case that means either hacky or bloated code especially in the long term.
+
+To explain for non-devs, that’s like a car manufacturer suddenly swapping the gas and brake pedal in your car. You’ll get used to it sure – but you’ll probably crash before you do!
+
+I carried on researching and came across this: [https://www.sitepoint.com/javascript-private-class-fields/](https://www.sitepoint.com/javascript-private-class-fields/)
+
+<figure className="aligncenter size-full is-resized"><img src="/wp-content/uploads/2020/01/download-8.png" alt="" width="811" height="118" /><figcaption>Private and Static methods on the horizon</figcaption></figure>
+
+So Javascript is likely to get private and static methods but they’re still only a proposal, there is some limited support for it but it’s not standard and won’t be mainstream for a while yet! 
+
+<figure className="aligncenter size-large"><a href="/wp-content/uploads/2020/01/chatHandler.png"><img width="1024" height="556" src="/wp-content/uploads/2020/01/chatHandler-1024x556.png" alt="" /></a><figcaption>What I did instead!</figcaption></figure>
+
+After a lot of head scratching and fucking about I decided to build the **ChatEventHandler** class in a way that it specifies what it can handle and how it handles them. 
+
+This means a bit more code for a developer but ultimately gives them full control and allows them to isolate the event handling from other business logic. 
+
+## Pipelines / DevOps
+
+Pipelines make it really easy for me as a developer to develop a feature, build it, test it, and know it’s production ready with minimal effort.
+
+Jenkins was working in a previous sprint, but logging in  or having it e-mail me every time it built is annoying and  spammy so now it posts in my slack every time it builds.
+
+This means every time I commit a change to Github, i’ll get a notification in Slack if it’s run properly, including any tests and later performance and security checks.
+
+<figure className="aligncenter size-large is-resized"><a href="/wp-content/uploads/2020/01/jenkins.jpg"><img src="/wp-content/uploads/2020/01/jenkins.jpg" alt="" width="655" height="269" /></a><figcaption>Jenkins nonsense</figcaption></figure>
+
+For the uninitiated…
+
+Imagine you’re building a house of cards, every time you place a card it could be your last. The house of cards comes tumbling down!
+
+A Pipeline is great because you can tell it where you want to place a card and it will test it out before I commit to it in real life!
+
+If what i’m about to put live will bring everything crashing down, I know long before I do any damage.
+
+<figure className="wp-block-video aligncenter"><video autoPlay loop muted src="/wp-content/uploads/2020/01/mp4.mp4" playsInline /></figure>
+
+Another great feature of pipelines is that if it’s clever enough, multiple people can add to the house of cards and we can see what cards fuck up our house and what cards work out! 
+
+This gives us the opportunity to fix the fuck ups.
+
+## Chat Server
+
+Next up, is connecting the chat server to the database! 
+
+This allows the chat server to maintain history, which means a user can see the last 50 messages when they join the room, or scroll until the end of time and life as we know it, finally putting an end to the pitiful human race once and for all.
+
+Sorry I trailed off there for a moment… 
+
+I’m only 4 weeks in, so I’m not 100% sure what database/s i’ll be using and I don’t want to use a single database technology for everything.
+
+<figure className="aligncenter size-large"><a href="/wp-content/uploads/2020/01/chatserver.png"><img width="1024" height="416" src="/wp-content/uploads/2020/01/chatserver-1024x416.png" alt="" /></a><figcaption>Chat server Mysql Driver</figcaption></figure>
+
+Initially, I think I’ll be using Mysql for cold storage allowing me to utilize replication and provide a more consistent way for other systems to easily analyze chat messages.\
+\
+A NoSQL solution will probably be used for warm storage, this will allow me to quickly roll up isolated servers, for example if one part of the community is more active than the rest I can give it a dedicated instance and mean that it scales well without huge hardware costs.
+
+<figure className="aligncenter size-large"><a href="/wp-content/uploads/2020/01/getdriver.jpg"><img width="547" height="589" src="/wp-content/uploads/2020/01/getdriver.jpg" alt="" /></a><figcaption>Get driver code</figcaption></figure>
+
+Everything is built using a model and driver concept. 
+
+A driver might be Mysql or MongoDB, which is initialized by a central controller class called “SoSa” and has some basic caching, which allows database instances to be used across models instead of per model.
+
+A Model then represents the underlying data model, they define where that data sits and can include methods to transform the data.
+
+<figure className="aligncenter size-large"><a href="/wp-content/uploads/2020/01/chatmessagemodel.jpg"><img width="381" height="263" src="/wp-content/uploads/2020/01/chatmessagemodel.jpg" alt="" /></a><figcaption>Model code</figcaption></figure>
+
+<figure className="aligncenter size-large"><a href="/wp-content/uploads/2020/01/chat-database.jpg"><img width="1024" height="520" src="/wp-content/uploads/2020/01/chat-database-1024x520.jpg" alt="" /></a><figcaption>Example database the model is based on</figcaption></figure>
+
+This has all been built in a way that it’s really easy to test (i’ve built a bunch of unit tests to), extend and add layers of caching to the models.
+
+**Fun Fact:** _Chat rooms were a last minute addition to the original SoSa and turned out to be the reason people stuck around!_
+
+For the original SoSa, I used a piece of software called Openfire. 
+
+Openfire was really hard to work with and scale, things like embeds, emojis, message filtering, subscription colours, profile pictures and country flags I had to build a “hack” to make functionality work. I even had to build our own DM system because Openfire’s DM system just wasn’t up to the job.
+
+<figure className="aligncenter size-large"><a href="/wp-content/uploads/2020/01/teabot.png"><img width="1024" height="560" src="/wp-content/uploads/2020/01/teabot-1024x560.png" alt="" /></a><figcaption>Teabot4000 talking nonsense</figcaption></figure>
+
+Having a custom chat server, that’s easy to work with, well documented and eventually open source will really benefit the community and my sanity!
+
+Anyway, that’s it for this sprint! I hope you got your fill and I’m looking forward to sharing my progress in the next two weeks again 🙂

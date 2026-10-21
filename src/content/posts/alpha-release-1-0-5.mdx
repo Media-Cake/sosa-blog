@@ -1,0 +1,71 @@
+---
+title: Alpha Release 1.0.5
+slug: alpha-release-1-0-5
+date: 2020-07-20T13:25:07.000Z
+modified: 2020-07-20T13:25:08.000Z
+author: james
+image: /wp-content/uploads/2020/07/Sprint1.png
+thumbnail: /wp-content/uploads/2020/07/Sprint1-500x320.png
+categories:
+  - updates
+  - rebuild
+tags:
+  - spam
+  - alpha
+  - release
+  - settings
+  - profiles
+description: This is a smaller release, I spent a lot of time refactoring and
+  cleaning up the code to support some new features so not a huge amount of
+  changes but
+excerpt: This is a smaller release, I spent a lot of time refactoring and
+  cleaning up the code to support some new features so not a huge amount of
+  changes but still some! A lot of this was done during the previous sprint to
+  make sure i had something to release this sprint. Character Restrictions Ok...
+---
+
+This is a smaller release, I spent a lot of time refactoring and cleaning up the code to support some new features so not a huge amount of changes but still some! 
+
+A lot of this was done during the previous sprint to make sure i had something to release this sprint.
+
+## Character Restrictions
+
+Ok so I actually listed this as done during 1.0.4 but apparently I’m dumb and I did it as part of 1.0.5.
+
+Messages are limited to 1000 characters and when you start getting to the edge, it will show a warning, then turn orange and then red.
+
+Should be enough to keep TheSire from being naughty
+
+[![](/wp-content/uploads/2020/07/CharacterLimit2-1024x526.jpg)](/wp-content/uploads/2020/07/CharacterLimit2-scaled.jpg)
+
+## Settings
+
+I know, exciting right? a settings screen!
+
+This is the first iteration of the user settings, and currently had on option (because I recently updated my discord app and hate that you can now only tag when you press on their username and not their face)
+
+This will evolve over time as the app gets more complex
+
+[![](/wp-content/uploads/2020/07/Screenshot_1595246181-498x1024.png)](/wp-content/uploads/2020/07/Screenshot_1595246181.png)
+
+## Profile Popup
+
+Now when you press and hold on a profile picture (or press once if you’ve changed the default behaviour) it will show a little popup with the user’s username and profile picture. Just like the settings screen this is just the initial build but will continue to improve over time
+
+[![](/wp-content/uploads/2020/07/Screenshot_1595246862-498x1024.png)](/wp-content/uploads/2020/07/Screenshot_1595246862.png)
+
+## Refactor
+
+Fun fact, when I started this app it was my first time working with React Native as a new project. So a lot of my code is super verbose and no real structure which means every few iterations I do a clean up, bring things in line with decent standards.
+
+This time round, I refactored the navigation between screens, this is to allow for a universal header with menus and to allow the settings screen without closing the app down.
+
+[https://github.com/SoSa-Community/app/commit/df0b77e95662f719a53d8ae964618d8aa345f3a8](https://github.com/SoSa-Community/app/commit/df0b77e95662f719a53d8ae964618d8aa345f3a8)
+
+I also converted (where applicable) all the class components into functional components, this can just reduce the complexity of components as well as improve the performance of the overall app (depend on the size of it)
+
+[https://github.com/SoSa-Community/app/commit/382abaa4c448bb4dd1b0188d99e039b88f4453a8](https://github.com/SoSa-Community/app/commit/382abaa4c448bb4dd1b0188d99e039b88f4453a8)
+
+And last but not least, I started to clean up the chat code. 
+
+[https://github.com/SoSa-Community/app/commit/543d00612c934a4da2c1e4c552777afcb64d9512](https://github.com/SoSa-Community/app/commit/543d00612c934a4da2c1e4c552777afcb64d9512)

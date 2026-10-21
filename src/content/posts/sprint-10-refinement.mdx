@@ -1,0 +1,195 @@
+---
+title: Sprint 10 – Refinement
+slug: sprint-10-refinement
+date: 2020-05-25T09:50:16.000Z
+modified: 2020-05-25T09:58:31.000Z
+author: james
+image: /wp-content/uploads/2020/05/https___cdn.evbuc_.com_images_100649762_395816135781_1_original.jpg
+thumbnail: /wp-content/uploads/2020/05/https___cdn.evbuc_.com_images_100649762_395816135781_1_original-500x320.jpg
+categories:
+  - tech
+  - gaming
+  - community
+  - rebuild
+tags:
+  - apps
+  - game-night
+  - chat-server
+  - stats
+  - beta
+description: I have literally no idea where the last two weeks have gone. If it
+  weren’t for Jira, I honestly wouldn’t know I’d achieved so much this sprint! 
+excerpt: I have literally no idea where the last two weeks have gone. If it
+  weren’t for Jira, I honestly wouldn’t know I’d achieved so much this sprint!
+  Everything is blending into a single, really long, coffee fueled day and it’s
+  weird. Stop it. Before we get started, here’s a table of contents! In case
+  you...
+---
+
+I have literally no idea where the last two weeks have gone. If it weren’t for Jira, I honestly wouldn’t know I’d achieved so much this sprint! 
+
+Everything is blending into a single, really long, coffee fueled day and it’s weird. Stop it.
+
+<figure className="aligncenter size-large is-resized"><a href="/wp-content/uploads/2020/05/99441034_10156916574891290_1513721945999278080_n.jpg"><img src="/wp-content/uploads/2020/05/99441034_10156916574891290_1513721945999278080_n.jpg" alt="" width="312" height="312" /></a></figure>
+
+Before we get started, here’s a table of contents! In case you want to torture yourself with my previous sprints!
+
+1. [Precursor](/sosa-precursor/)
+2. [Sprint 1 – The Foundations](/sosa-the-foundations/)
+3. [Sprint 2 – The ummm Foundations?](/sosa-the-ummm-foundations/)
+4. [Sprint 2 – Nerd Ramble](/nerd-ramble-sprint-2/)
+5. [Sprint 3 – Cooking with matches!](/cooking-with-matches/)
+6. [Sprint 4 – Now We’re Cooking With Gas!](/sprint-4-now-were-cooking-with-gas/)
+7. [Sprint 5 – Robot Uprising](/sprint-5-robot-uprising/)
+8. [This Is Not the Sprint You’re Looking For](/this-is-not-the-sprint-youre-looking-for/)
+9. [Sprint 6 – That’s a Weird Looking Patronus](/sprint-6-thats-a-weird-looking-patronus/)
+10. [Sprint 7 – Corona Stole My Title](/sprint-7-corona-stole-my-title/)
+11. [Sprint 8 – Adventure Time!](/sprint-8-adventure-time/)
+12. [Sprint 9 – Now In Technicolor](/sprint-9-now-in-technicolor/)
+13. Sprint 10 – Refinement
+14. [Sprint 11 – Motion In The Ocean](/sprint-11-motion-in-the-ocean/)
+15. [Alpha Release 1.0.3](/alpha-release-1-0-3/)
+16. [Sprint 12 – No Rest For The Wicked](/sprint-12-no-rest-for-the-wicked/)
+17. [Alpha Release 1.0.4](/alpha-release-1-0-4/)
+18. [Sprint 13 – I Need a Break](/sprint-13-i-need-a-break/)
+19. [Alpha Release 1.0.5](/alpha-release-1-0-5/)
+20. [Sprint 14 – Just James Things](/sprint-14-just-james-things/)
+21. [Sprint 15 – Wearing My Heart On My Sleeve](/sprint-15-wearing-my-heart-on-my-sleeve/)
+22. [Alpha Release 1.0.6](/alpha-release-1-0-6/)
+23. [Sprint 16 – Warm Up](/sprint-16-warm-up/)
+24. [Alpha Release 1.0.7](/alpha-release-1-0-7/)
+25. [Sprint 17 – Coffee’s back on the menu!](/sprint-17-coffees-back-on-the-menu/)
+26. [Alpha Release 1.0.8](/alpha-release-1-0-8/)
+27. [Sprint 18 – We’re on fire!](/sprint-18-were-on-fire/)
+28. [Sprint 19 – Slowly fast](/sprint-19-slowly-fast/)
+29. [Sprint 20 – Let’s get Nerdy](/sprint-20-lets-get-nerdy/)
+30. [Alpha Release 1.0.9](/alpha-release-1-0-9/)
+31. [Sprint 21 – We’re back!](/sprint-21-were-back/)
+32. [Alpha Release 1.1.0](/alpha-release-1-1-0/)
+33. [Sprint 22 – You Look Cute Today](/sprint-22-you-look-cute-today/)
+34. [Alpha Release 1.1.1](/alpha-release-1-1-1/)
+35. [Sprint 23 – Sausage Smuggler](/sprint-23-sausage-smuggler/)
+36. [A SoSa Retrospective](/a-sosa-retrospective/)
+37. [Sprint 25 – I am SoSa and don’t call me Shirley](/sprint-25-i-am-sosa-and-dont-call-me-shirley/)
+38. [Sprint 26 – The best laid schemes of mice and men](/sprint-26-the-best-laid-schemes-of-mice-and-men/)
+39. [Sprint 27 – Vogue, Strike a Pose](/sprint-27-vogue-strike-a-pose/)
+40. [Sprint 28 – a New Hope](/sprint-28-a-new-hope/)
+41. [I Couldn’t Think Of a Title](/i-couldnt-think-of-a-title/)
+42. [Guess who’s back, Back again!](/guess-whos-back-back-again/)
+43. [Demolition Man](/demolition-man/)
+44. [Squid James](/squid-james/)
+45. [I AM STILL ALIVE](/i-am-still-alive/)
+46. [We Didn’t Choose This Life, We’re Just Living In It](/we-didnt-choose-this-life-were-just-living-in-it/)
+47. [Let’s go!](/lets-go/)
+
+## Beta App – version 1.0.1
+
+The main chunk of the work this sprint has been refactoring the chat server to support authentication and just a general clean up from the initial build I did a little while back.
+
+So just in case I couldn’t get it done during this sprint, I enlisted a couple more iPhone users from the beta list and along with the council I got build 1.0.1 out to everyone for testing.
+
+This included the following changes:
+
+– General stability fixes
+
+– Improved UI
+
+– Changed Send button
+
+– User list in Right navigation
+
+– Rooms removed on disconnect
+
+– Press Profile picture to tag
+
+– Ability to scroll messages
+
+– Tags highlight your chat row
+
+Everyone has been great and given me a bunch of feedback to address. So i’ve added that to my backlog 🙂
+
+## Game Night Video
+
+Starting to get into a rhythm with these now! I’ve finished Part 1 of the Jackbox Party 6 video from our game night in February. 
+
+This one was a little bit more difficult to make interesting, so please be gentle and of course like and subscribe! 🙂
+
+<figure className="wp-block-embed-youtube wp-block-embed is-type-video is-provider-youtube wp-embed-aspect-16-9 wp-has-aspect-ratio"><div className="wp-block-embed__wrapper"><iframe title="SoSa, Plays - Jackbox Party 6 - Part 1" width="500" height="281" src="https://www.youtube.com/embed/h6V4p21wjWs?feature=oembed" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen /></div></figure>
+
+## Game Night – Jackbox Party
+
+[![](/wp-content/uploads/2020/05/SoSaPlaysPartyPack3-1024x576-1.jpg)](/wp-content/uploads/2020/05/SoSaPlaysPartyPack3-1024x576-1.jpg)
+
+Next SoSa game night we will be playing Jackbox Party! It’s been just over a month since we last played this so figured it’s time again
+
+You don’t need to buy anything this time around, it’s free to take part and you just need a mobile phone / web browser.
+
+**Sunday 14th June 1900-2100 GMT / 1200-1400 PT / 1500-1700 ET**
+
+You can get a ticket here:
+
+[https://www.eventbrite.co.uk/e/sosa-plays-jack-box-party-tickets-106628970120](https://www.eventbrite.co.uk/e/sosa-plays-jack-box-party-tickets-106628970120)
+
+Games are max 6-8 players but unlimited audience players, so if there’s a lot of us we can either split ya’ll into groups or just take it in turns who plays!
+
+## App Updates
+
+Tag highlighting / Profile Picture to tag
+
+Both are pretty self explanatory, You can press someone’s face to tag them and when someone tags you it highlights their message 🙂
+
+[![](/wp-content/uploads/2020/05/Annotation-2020-05-24-113907.png)](/wp-content/uploads/2020/05/Annotation-2020-05-24-113907.png)
+
+### Scrolling
+
+This was a little more difficult because by default in ReactNative there’s no way to consistently do this cross platform, for now i’ve done a slight hack which I’m testing for performance implications. 
+
+If it’s fine, then I can also use this to give people the ability to slow down chat when it gets too fast. If it doesn’t work, then my battery life is going to suffer horribly until I build a native solution.
+
+Also, when new messages come in you get a little orange popup!
+
+[![](/wp-content/uploads/2020/05/Annotation-2020-05-24-113742.png)](/wp-content/uploads/2020/05/Annotation-2020-05-24-113742.png)
+
+## Chat Server Refactor!
+
+[![](/wp-content/uploads/2020/05/screenshot-github.com-2020.05.23-22_12_48.png)](/wp-content/uploads/2020/05/screenshot-github.com-2020.05.23-22_12_48.png)
+
+The last time I did work on the Chat Server was back March and with all the work I’d done, it was time to clean it up, integrate with our authentication service and move it further towards our final product. 
+
+All of which I’ve done this sprint!
+
+Because none of this is open source at the moment I’ll try and explain the changes I’ve done and why.
+
+### Providers
+
+This change was mostly about the authentication system, for every system there will be a bunch of different “Service providers” these providers might provide an authentication system, or provide usernames, profile pictures etc etc.
+
+I wanted to start using this concept now so that moving forward I can change the way things are implemented for example: authentication or how a system knows your username, but the underlying system (consumer) doesn’t need to know about the change.
+
+[![](/wp-content/uploads/2020/05/aPNkfZH-1024x648.png)](/wp-content/uploads/2020/05/aPNkfZH.png)
+
+### Services
+
+Another big change has been implementing services!
+
+Originally all of the end points were in a single file, which works great for something simple but our chat server is going to be far from simple and so I had to move these into “Services”.
+
+A service is exactly what it says on the tin, it provides a service to another part of the system.
+
+Just like providers the point of this is to allow the code to get more complex without the underlying system needed to know anything about it. 
+
+This helps with adding new features, running versioned features and working with other developers to improve the chat server in the long run.
+
+[![](/wp-content/uploads/2020/05/TDiqvYK-1024x648.png)](/wp-content/uploads/2020/05/TDiqvYK.png)
+
+## Stats
+
+Beta list is now at 288, again a couple of sign up were spam so i’ve removed those.
+
+Unique Visitors are down this sprint from 12,130 last sprint to 9,725
+
+Average position has increased slightly again from 23.3 to 23.2, impressions are down from 1.84k to 1.83k, but click through rate is up from 2.3% to 2.7%
+
+Last bu not least, FB reach is up slightly from 2289 to 2901 🙂
+
+[![](/wp-content/uploads/2020/05/screenshot-search.google.com-2020.05.24-13_06_32.png)](/wp-content/uploads/2020/05/screenshot-search.google.com-2020.05.24-13_06_32.png)

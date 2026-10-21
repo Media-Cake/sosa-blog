@@ -1,0 +1,65 @@
+---
+title: Alpha Release 1.0.9
+slug: alpha-release-1-0-9
+date: 2020-11-10T16:39:29.000Z
+modified: 2020-11-10T16:43:38.000Z
+author: james
+image: /wp-content/uploads/2020/11/alpha-1.0.9.jpg
+thumbnail: /wp-content/uploads/2020/11/alpha-1.0.9-500x320.jpg
+categories:
+  - updates
+  - rebuild
+tags:
+  - comments
+  - meetups
+  - alpha
+  - uploads
+  - navigation
+description: Here's a video to check out the app and all these changes in real
+  time :) https://youtu.be/2Hct1_S9gNc Uploads / Embeds - First version In chat,
+  you can
+excerpt: Here’s a video to check out the app and all these changes in real time
+  🙂 Uploads / Embeds – First version In chat, you can now upload an image and
+  share it with chat, this works using amazon S3 and chat will now embed the
+  image as well. The interface is a little clunky...
+---
+
+Here’s a video to check out the app and all these changes in real time 🙂
+
+<figure className="wp-block-embed-youtube wp-block-embed is-type-video is-provider-youtube wp-embed-aspect-16-9 wp-has-aspect-ratio"><div className="wp-block-embed__wrapper"><iframe title="SoSa - Alpha Release 1.0.9" width="500" height="281" src="https://www.youtube.com/embed/2Hct1_S9gNc?feature=oembed" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen /></div></figure>
+
+## Uploads / Embeds – First version
+
+In chat, you can now upload an image and share it with chat, this works using amazon S3 and chat will now embed the image as well.
+
+The interface is a little clunky right now, I’m going to clean this up over time!
+
+<figure className="aligncenter size-large is-resized"><img src="/wp-content/uploads/2020/11/uploadexample-1024x702.jpg" alt="Example of uploading an image" width="768" height="527" /></figure>
+
+## Meetups have multiple layers of comments
+
+In a previous version, I introduced meetups with single level comments. This version i’ve added multiple levels to these, hopefully they look OK but not a major issue as I have a designer working on the overall design.
+
+<figure className="aligncenter size-large is-resized"><a href="/wp-content/uploads/2020/11/Screenshot_1605026072-1.png"><img src="/wp-content/uploads/2020/11/Screenshot_1605026072-1-498x1024.png" alt="meetup comments at different levels" width="374" height="768" /></a></figure>
+
+## Fix – Meetup button being weird
+
+In the last release, our when you pressed “Going” the meetup button would do something weird. I’ve fixed that this sprint (video showing off the original issue)
+
+<figure className="wp-block-embed-youtube wp-block-embed is-type-video is-provider-youtube wp-embed-aspect-16-9 wp-has-aspect-ratio"><div className="wp-block-embed__wrapper"><iframe title="Bug - Weird Formatting on meetup buttons" width="500" height="281" src="https://www.youtube.com/embed/H7RvBMWWIso?feature=oembed" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen /></div></figure>
+
+## Fix – Navigation still slideable when in a screen that doesn’t have it
+
+So this was an unusual one, but basically when you used swipe gestures on a screen that wasn’t showing the menu (showing a back button instead) and then click on a menu item.
+
+The new screen would end up in an unusual state, eg chat would have Meetups header
+
+<figure className="wp-block-image size-large is-resized"><img src="/wp-content/uploads/2020/11/image-3-1024x445.png" alt="" width="768" height="334" /></figure>
+
+I’ve fixed this now
+
+## Fix – iOS Keyboard overlapping chat input!
+
+Exactly what it says on the tin, the keyboard was overlapping the input 🙂
+
+[![Keyboard overlapping the text input](/wp-content/uploads/2020/11/Overlap-473x1024.png)](/wp-content/uploads/2020/11/Overlap.png)

@@ -1,0 +1,114 @@
+---
+title: Sprint 26 – The best laid schemes of mice and men
+slug: sprint-26-the-best-laid-schemes-of-mice-and-men
+date: 2021-02-15T20:07:46.000Z
+modified: 2021-02-15T20:07:46.000Z
+author: admin
+image: /wp-content/uploads/2021/02/tendtherabbits.jpg
+thumbnail: /wp-content/uploads/2021/02/tendtherabbits-500x320.jpg
+categories:
+  - updates
+  - rebuild
+tags: []
+description: Hello everyone!  This update is going to be more technical than
+  usual, I set out with the plan to finish last weeks clean up, then start
+  working on
+excerpt: Hello everyone! This update is going to be more technical than usual, I
+  set out with the plan to finish last weeks clean up, then start working on
+  profiles but ended up going down a buggy rabbit hole. Most of this was over
+  just a few days… As you can see it’s been… quite the...
+---
+
+Hello everyone! 
+
+This update is going to be more technical than usual, I set out with the plan to finish last weeks clean up, then start working on profiles but ended up going down a buggy rabbit hole.
+
+<figure className="aligncenter size-large"><a href="/wp-content/uploads/2021/02/image.png"><img width="670" height="211" src="/wp-content/uploads/2021/02/image.png" alt="Image showing my despair and desperation" /></a><figcaption>Most of this was over just a few days…</figcaption></figure>
+
+As you can see it’s been… quite the rabbit hole! So whilst a lot has happened in the last 2 weeks and the code is like a billion times cleaner – I’ve not actually achieved anything visual.
+
+Before we get into this mess let’s get the other stuff out of the way!
+
+## Game night
+
+<figure className="aligncenter size-large"><a href="/wp-content/uploads/2021/02/image-3.png"><img width="1024" height="576" src="/wp-content/uploads/2021/02/image-3-1024x576.png" alt="" /></a><figcaption>Valheim is about vikings, which I think is why TheSire picked it</figcaption></figure>
+
+The next [SoSa](https://sosa.net) game night will be [Valheim](https://store.steampowered.com/app/892970/Valheim/)!  
+
+Sunday 7th March 1900-2100 GMT / 1200-1400 PT / 1500-1700 ET
+
+A brutal exploration and survival game for 1-10 players, set in a procedurally-generated purgatory inspired by viking culture. Battle, build, and conquer your way to a saga worthy of Odin’s patronage
+
+[https://www.eventbrite.co.uk/e/sosa-gamenight-valheim-tickets-141710603229](https://www.eventbrite.co.uk/e/sosa-gamenight-valheim-tickets-141710603229)
+
+## Stats
+
+[LinkedIn](https://www.linkedin.com/company/sosa-community/) grew from 851 to 878\
+[Patreon](https://www.patreon.com/sosa_community), We stayed steady at 16!\
+[Our Beta List](https://sosa.net/) grew from 398 to 404
+
+<figure className="aligncenter size-large"><a href="/wp-content/uploads/2021/02/image-1.png"><img width="929" height="390" src="/wp-content/uploads/2021/02/image-1.png" alt="Website stats" /></a><figcaption>What are numbers really?</figcaption></figure>
+
+This sprint our Average position went up from 22.7 to 21.7!\
+\
+Impressions are up from 3k to 3.64k and Click through is up again slightly from 2.4% to 2.6!
+
+Domain authority is holding steady at 28!
+
+## The Mess
+
+OK, so now we’ve gotten the Game night and stats out of the way – let’s talk about this Rabbit hole!
+
+[![](/wp-content/uploads/2021/02/image-2-907x1024.png)](/wp-content/uploads/2021/02/image-2.png)
+
+First up was introducing some context providers.
+
+Originally, I wanted to do this to handle profiles so that when  you change your profile picture / details, especially when you do it from the website or similar – it’s reflected through the app! 
+
+But to make that work, I had to change all of my components to functional components – well I didn’t HAVE to but the whole thing would have been an unmanageable mess if I didn’t. 
+
+So whilst I was making the change it made sense to introduce context for Authentication, API access and the overarching app too!
+
+[![](/wp-content/uploads/2021/02/image-4-683x1024.png)](/wp-content/uploads/2021/02/image-4.png)
+
+It took a bit of time but I managed to refactor login, registration and introduce AppContext, AuthContext and APIContext.
+
+Then I thought to myself – why am I using 3 different navigation stacks? 
+
+- One for unauthorized users
+- Drawers
+- One for authorized users
+
+This is the structure before the work I did, as you can see – everything is basically a descendent of a single router and settings sits in the unauthorized zone.
+
+The Authenticated Router is wrapped inside a Drawer router – it’s all a bit of a mess…
+
+<figure className="aligncenter size-large"><a href="/wp-content/uploads/2021/02/image-5.png"><img width="1024" height="703" src="/wp-content/uploads/2021/02/image-5-1024x703.png" alt="Bad architecture. That's what you're seeing here" /></a><figcaption>Layers. Layers for your Layers. Layers for your layer’s layers!</figcaption></figure>
+
+So my first challenge was separating it all out into something much cleaner with a simpler structure, I decided to separate “Authorized” from “Unauthorized” and then give them their own routers.
+
+I then moved the settings Screen into the Authorized zone and built a context provider for the Drawers.
+
+<figure className="aligncenter size-large"><a href="/wp-content/uploads/2021/02/image-6.png"><img width="1024" height="341" src="/wp-content/uploads/2021/02/image-6-1024x341.png" alt="Organized chaos" /></a><figcaption>A much neater package</figcaption></figure>
+
+This process has helped separate concerns significantly and reduce the code complexity but it came with it’s own unique problems! 
+
+The main one being state management and the drawers. You see for the drawers to work they need to be dynamic – I need to be able to add and remove things on the fly otherwise when a new user logs in OR a chat room disappears – we can’t show it.
+
+The problem with this approach is that with the way React works, every time you update the state of a context provider (In this case the drawers context) all of it’s children rerender…
+
+<figure className="wp-block-embed-youtube wp-block-embed is-type-video is-provider-youtube wp-embed-aspect-16-9 wp-has-aspect-ratio"><div className="wp-block-embed__wrapper"><iframe title="React Rendering Run Away" width="500" height="281" src="https://www.youtube.com/embed/lALYw15Cp0U?feature=oembed" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen /></div></figure>
+
+So i tried implementing memo’s and purecomponents but found that these still re-render when you’re using a context provider and consuming it in the same class.
+
+When that didn’t work, I did what I should of done in the first place honestly – split out the components into Drawer components.
+
+<figure className="aligncenter size-large"><a href="/wp-content/uploads/2021/02/image-7.png"><img width="901" height="905" src="/wp-content/uploads/2021/02/image-7.png" alt="" /></a><figcaption>The DrawerMenu component</figcaption></figure>
+
+And no more issues!
+
+There were a considerable amount of other changes all relating to these core changes but the end result is a much cleaner, easier to digest code base with some structure – something we’ve been sorely lacking until this point.
+
+If you want to see how much changed out of morbid curiosity you can check out the commit here: [https://github.com/SoSa-Community/app/commit/72f2ecbab76adceca0b30ed3650569db1d59ac60](https://github.com/SoSa-Community/app/commit/72f2ecbab76adceca0b30ed3650569db1d59ac60) on the github repo!
+
+Anyway, I hope you enjoyed this read! I still have a bit more to go, a few more components to move into functional components but the bulk of the work is done now and I hope this next sprint I can get profiles ready!

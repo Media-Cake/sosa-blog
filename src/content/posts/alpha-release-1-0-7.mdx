@@ -1,0 +1,69 @@
+---
+title: Alpha Release 1.0.7
+slug: alpha-release-1-0-7
+date: 2020-09-01T18:31:33.000Z
+modified: 2020-09-01T18:31:33.000Z
+author: james
+image: /wp-content/uploads/2020/09/Release1.0.7.jpg
+thumbnail: /wp-content/uploads/2020/09/Release1.0.7-500x320.jpg
+categories:
+  - updates
+  - rebuild
+tags:
+  - login
+  - meetups
+  - alpha
+  - google
+  - lines
+  - vida
+  - timeout
+description: Here's the line up for Alpha Release 1.0.7! We're picking up a bit
+  more speed again now and I hope each release will show case more and more
+  features :)
+excerpt: Here’s the line up for Alpha Release 1.0.7! We’re picking up a bit more
+  speed again now and I hope each release will show case more and more features
+  🙂 Google Login! Last of the logins, this one was a bit more complicated
+  because we don’t get a username from Google! For now, I’ve made...
+---
+
+Here’s the line up for Alpha Release 1.0.7! We’re picking up a bit more speed again now and I hope each release will show case more and more features 🙂
+
+## Google Login!
+
+Last of the logins, this one was a bit more complicated because we don’t get a username from Google! For now, I’ve made it give you a random username. 
+
+Next Sprint I’ll add a Welcome screen to handle where the username is taken or non existent from social media logins!
+
+<figure className="aligncenter size-large is-resized"><a href="/wp-content/uploads/2020/09/Screenshot_1598981240.png"><img src="/wp-content/uploads/2020/09/Screenshot_1598981240-498x1024.png" alt="Login screen" width="374" height="768" /></a><figcaption>I should probably change that icon…</figcaption></figure>
+
+## Meetup Screen
+
+What good is a [list of meetups](/alpha-release-1-0-6/) if you can get more details on the one you fancy right? So as part of this release you can now click through to an individual meetup and see all the details!
+
+<figure className="aligncenter size-large is-resized"><img src="/wp-content/uploads/2020/09/meetup-996x1024.jpg" alt="Individual meetup screen with extended comments" width="747" height="768" /><figcaption>Everyone loves bacon, even those who don’t love it. Everyone.</figcaption></figure>
+
+## Lines? No lines? 
+
+<figure className="aligncenter size-large"><a href="/wp-content/uploads/2020/09/image.png"><img width="280" height="82" src="/wp-content/uploads/2020/09/image.png" alt="Vida hates lines" /></a><figcaption>Vida loves lines!</figcaption></figure>
+
+Through testing, it’s good to see what testers like and what comes down to personal preference. [SoSa](https://sosa.net) is all about customisation (within reason) and lines in chat seemed like a simple thing to implement and add a little setting so people can toggle it!
+
+<figure className="aligncenter size-large is-resized"><a href="/wp-content/uploads/2020/09/image-2.jpeg"><img src="/wp-content/uploads/2020/09/image-2-996x1024.jpeg" alt="Bots talking about being kicked" width="747" height="768" /></a><figcaption>Bots are very sensitive about people kicking them!</figcaption></figure>
+
+## App – Network timeout should warn user
+
+A relatively minor bug, but essentially when the network connection was taking to long to login / register it wasn’t warning the user. Now it does!
+
+<figure className="aligncenter size-large is-resized"><a href="/wp-content/uploads/2020/09/image-1.png"><img src="/wp-content/uploads/2020/09/image-1-498x1024.png" alt="TIMEOUT!" width="374" height="768" /></a><figcaption>Maybe I should just make timeout’s illegal.<br />You get banned as soon as you reconnect!</figcaption></figure>
+
+## App – Validation takes too long
+
+This is something that will improve as we get bigger, but essentially when you sign up – our backend validates your e-mail domain to make sure it really exists and isn’t a pop-up domain!
+
+Unfortunately that process can take a couple of seconds sometimes which is like an eternity when you’re a user.
+
+![A picture of a database](/wp-content/uploads/2020/09/image-2.png)
+
+To mitigate this, I took all the domain names used on the original SoSa (about 3000 across 100,000 accounts) and pre-cached them. This means the average user (people using their gmail / Hotmail / yahoo) won’t get any delay and more obscure or personalised domains will notice a slight delay when signing up.
+
+We won’t ban people from new domains but it can be used as a “marker” to suggest they might be a spam account. Obviously I’ll use a series of such markers and adjust the experience slightly to reduce the amount of damage a spammer can do!

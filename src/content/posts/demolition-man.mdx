@@ -1,0 +1,157 @@
+---
+title: Demolition Man
+slug: demolition-man
+date: 2021-07-19T17:43:21.000Z
+modified: 2021-07-19T17:46:29.000Z
+author: admin
+image: /wp-content/uploads/2021/07/DemolitionMan.jpg
+thumbnail: /wp-content/uploads/2021/07/DemolitionMan-500x320.jpg
+categories:
+  - updates
+  - tech
+  - rebuild
+tags:
+  - security
+  - meetups
+  - forgot-password
+  - profiles
+  - nerdy
+  - work
+  - demolition
+  - house
+description: Hi hi! I thought you’d all like an update!  Before we get started I
+  just wanted to say a little thank you to everyone who sends me lovely messages
+excerpt: Hi hi! I thought you’d all like an update! Before we get started I just
+  wanted to say a little thank you to everyone who sends me lovely messages and
+  engages with these posts, i’m mostly doing them to keep myself accountable but
+  it’s nice knowing i’m not just talking into the void and people...
+---
+
+Hi hi! I thought you’d all like an update! 
+
+Before we get started I just wanted to say a little thank you to everyone who sends me lovely messages and engages with these posts, i’m mostly doing them to keep myself accountable but it’s nice knowing i’m not just talking into the void and people actually follow my nonsense.
+
+There’s a bit more technical stuff in this update and also I’ve added a bit at the bottom about my personal life over the last few weeks 🙂
+
+This sprint’s focus has been mostly about demolishing things and building them back up, I hope you enjoy!
+
+## Cropping
+
+Now with profile picture and cover pictures uploading, I wanted to introduce a cropper to make it easier to get the right size of image.
+
+At the moment i’m just using [react-native-image-crop-picker](https://github.com/ivpusic/react-native-image-crop-picker) which does the job, but I think it would be nice to get it at very least in line with our designs so i’ve asked the designer to take a look and see what she can do with it
+
+<figure className="aligncenter size-large"><a href="/wp-content/uploads/2021/07/image.png"><img width="1024" height="655" src="/wp-content/uploads/2021/07/image-1024x655.png" alt="Showing off cropping" /></a><figcaption>Yes, I am secretly a plank of wood</figcaption></figure>
+
+Also at the moment, this is just cropping the image and uploading direction to [Amazon S3](https://aws.amazon.com/s3/) I’d like to look at extending this in a later sprint to work with [Amazon Lambda](https://aws.amazon.com/lambda/) which can do any necessary filtering, scaling etc so that it generates preview images on upload.
+
+The reason I haven’t taken this that far yet is because of time and there’s a whole orchestration layer I will need to build to make it work seamlessly to the user – so a project for a later time, this is MVP for the moment.
+
+## Welcome Screen + My Profile Tweaks
+
+Last sprint I’d created the new My profile screen, that’s great and all but if you don’t have a profile – what happens? 
+
+A blank screen.
+
+I think we can all agree, seeing a blank screen when you login for the first time isn’t a great user experience. Makes sense to have a welcome screen right?
+
+[![](/wp-content/uploads/2021/07/image.jpeg)](/wp-content/uploads/2021/07/image.jpeg)
+
+We touched on this earlier in the year but I never really fleshed it out and as you can see it’s pretty ugly. 
+
+This sprint I got the designer working on it and whilst she was I spent some time replicating the new profile screen as a welcome screen too!
+
+As I was testing it also occurred to me that we already have some users (Alpha testers) and none of them have profiles so I made the platform detect for that and show them the same screen.
+
+<figure className="aligncenter size-large"><a href="/wp-content/uploads/2021/07/image-1.png"><img width="1024" height="981" src="/wp-content/uploads/2021/07/image-1-1024x981.png" alt="Showing the welcome screen" /></a><figcaption>My Gender is British</figcaption></figure>
+
+Don’t worry, email isn’t a required field but if you want to provide it for things like password resets then you can.
+
+## Password Reset
+
+Unfortunately because it’s been so long since the Alpha testers have had something to play with, most have probably forgotten their passwords. I know I had.
+
+I actually built a lot of this flow previously but never activated it because it needed a lot more testing, but the sudden need for it and the designer kindly creating new designs seemed like a good time if any to re-implement in React hook forms, test through and make live!
+
+<figure className="aligncenter size-large"><a href="/wp-content/uploads/2021/07/image-2.png"><img width="1024" height="406" src="/wp-content/uploads/2021/07/image-2-1024x406.png" alt="Password reset flow" /></a><figcaption>I don’t even need a password, I’m just taunting you</figcaption></figure>
+
+We do a few things here behind the scenes. When you enter your e-mail address, we send an email out with a code and generate a token
+
+<figure className="aligncenter size-large"><a href="/wp-content/uploads/2021/07/image-3.png"><img width="1024" height="376" src="/wp-content/uploads/2021/07/image-3-1024x376.png" alt="" /></a><figcaption>If your e-mail doesn’t exist, do you really exist?</figcaption></figure>
+
+Next up, when you enter your pin into the app, it sends that along with the e-mail address for verification and provides you with two tokens.
+
+[![](/wp-content/uploads/2021/07/image-4-1024x406.png)](/wp-content/uploads/2021/07/image-4.png)
+
+Once the second token is generated, someone can’t re-use the code you entered originally unless they have both tokens as well as the pin. You now also only have a 15 minute window to reset your password.
+
+[![](/wp-content/uploads/2021/07/image-5-1024x299.png)](/wp-content/uploads/2021/07/image-5.png)
+
+In addition to the token and expiry system, if you create a second password reset the first one will no longer work. This is to help protect again certain types of RNG attacks.
+
+Because there is a requirement not to have e-mails, I’ll look at a recovery key system as well later down the line to enable password resets for people who don’t have an e-mail address attached.
+
+## Create Meetup Refactor
+
+This was some technical debt that I decided to clear during this sprint so that when the designer designed the new screen it was easy to transplant.
+
+Nothing functionally has changed here, but now the whole area has been refactored to use react hook forms like other areas
+
+## General Fixes and updates
+
+Some of this sprint went towards just clearing some old technical debt.
+
+- I updated to react 17 and most of the major packages along with it, 
+- introduced moment, 
+- fixed issues with the local storage implementation, 
+- split our Input component to sub components (I went a bit over the top stacking too much functionality into a single component), 
+- Tested, tweaked and updated the DateTimeInput component
+- Refactored some nested context’s to remove re-rendering bugs
+- Removed old unused components and code
+- Refactored some promises to async / await
+- Generally aimed to improve readability
+
+## Stats
+
+[LinkedIn](https://www.linkedin.com/company/sosa-community/) grew from 915 to 929\
+[Our Beta List](https://sosa.net/) grew from 419 to 427
+
+[![](/wp-content/uploads/2021/07/image-6-1024x386.png)](/wp-content/uploads/2021/07/image-6.png)
+
+This sprint our Average position has gone down up 21.8 to 21.4! and click through is steady at 2.2%
+
+Domain authority has stuck at 29.
+
+## Personal
+
+I thought I’d add a little section on what I’ve been doing personally. I think this is important because a lot of time is passing and with Covid it’s all felt like a bit of a blur.
+
+### Week off
+
+I took another week off from work, during that week i went to the gym a few times, did some work on the house, watched TV, went to the scattering of my grandfather’s ashes, had a nice long chat with my cousin and her family, worked on SoSa and generally tried to relax.
+
+If you haven’t watched Loki, I definitely recommend it. I’ve loved every last minute!
+
+### House
+
+I’ve been happily demolishing the house, trying to get it ready to decorate. 
+
+[![](/wp-content/uploads/2021/07/HouseDemo-1024x1024.jpg)](/wp-content/uploads/2021/07/HouseDemo.jpg)
+
+I’ve had a few quotes from electricians to sort out the wiring in the house and with such long lead times I started a course to become a qualified electrician!
+
+This will allow me to notify the building inspector and do the rewire myself, but I will still need a certified electrician to sign it off.
+
+I’ve managed to clear out three rooms, all the old radiators, remove the old cupboards in the kitchen and demolish a wall!
+
+<figure className="wp-block-image size-large"><img width="1024" height="534" src="/wp-content/uploads/2021/07/image-7-1024x534.png" alt="Things i've demolished" /><figcaption>You’re next.</figcaption></figure>
+
+### Work
+
+I finally got to meet most of my colleagues (socially distanced of course) and had a really good time. The team is really great and it was like we’d all known each other forever.
+
+Unfortunately during my time off, I had a slight health scare and after a lot of thought and consideration I decided that the impact this role has had on my health isn’t worth it. 
+
+I love what we’re working on and the team, but I get so emotionally invested in my work that I let other things suffer which I shouldn’t, so I’ve handed in my notice. 
+
+After the notice period is over I’ll be looking at either a more mature business (start up’s are incredibly volatile) or contracting again. Something where I can invest in without it having an unintended impact on my health.

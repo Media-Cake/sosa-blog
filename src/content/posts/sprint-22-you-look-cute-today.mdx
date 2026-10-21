@@ -1,0 +1,190 @@
+---
+title: Sprint 22 – You Look Cute Today
+slug: sprint-22-you-look-cute-today
+date: 2020-11-23T12:35:14.000Z
+modified: 2020-11-23T12:35:47.000Z
+author: admin
+image: /wp-content/uploads/2020/11/shutterstock_358613003_1.jpg
+thumbnail: /wp-content/uploads/2020/11/shutterstock_358613003_1-500x320.jpg
+categories:
+  - updates
+  - rebuild
+tags:
+  - chat
+  - history
+  - gamenight
+  - stats
+description: Good morning boys, girls and amorphous blobs.  How are you? You
+  look cute today. I’m writing this at 4am, because apparently I can’t sleep, so
+  bear
+excerpt: Good morning boys, girls and amorphous blobs. How are you? You look
+  cute today. I’m writing this at 4am, because apparently I can’t sleep, so bear
+  with me. I think i’m considerably funnier than I am at the best of times –
+  much less at 4am. This sprint has gone really well, I’m really pleased...
+---
+
+Good morning boys, girls and amorphous blobs. 
+
+How are you? You look cute today.
+
+I’m writing this at 4am, because apparently I can’t sleep, so bear with me. I think i’m considerably funnier than I am at the best of times – much less at 4am.
+
+This sprint has gone really well, I’m really pleased with the progress especially after the previous few weeks.
+
+All the changes I made to the client side architecture made a huge difference. Want to know more? then continue reading my friend! for we go on an adventure into my insanity!
+
+## Alpha Release 1.1.0
+
+Firstly, welcome Jelle and Peter to the Alpha team! I’m going to start slowly adding more people to the test team now in the hope to maximise feedback and getting into building a process!
+
+You can read more about what’s in this release here:
+
+<figure className="wp-block-embed-wordpress wp-block-embed is-type-wp-embed is-provider-sosa"><div className="wp-block-embed__wrapper"><blockquote className="wp-embedded-content" dataSecret="UgmQOzn79p"><a href="/alpha-release-1-1-0/">Alpha Release 1.1.0</a></blockquote><iframe className="wp-embedded-content" sandbox="allow-scripts" security="restricted" style={{"position":"absolute","clip":"rect(1px, 1px, 1px, 1px)"}} title="“Alpha Release 1.1.0” — SoSa" src="/alpha-release-1-1-0/embed/#?secret=UgmQOzn79p" dataSecret="UgmQOzn79p" width="500" height="282" marginWidth="0" marginHeight="0" scrolling="no" /></div></figure>
+
+## Bot emotions
+
+![](/wp-content/uploads/2020/11/image-4-1024x764.png)
+
+During this sprint, I’ve been working with the designer to try and get a simple design to show off emotions with just eyes. Which was a lot harder than we thought and a lot of surprising answers as well as some great feedback
+
+You can take part in the survey here [https://www.surveymonkey.co.uk/r/3H5LJ3N](https://www.surveymonkey.co.uk/r/3H5LJ3N)
+
+Thank you everyone for your comments, they’re always appreciated! (and shared them with the designer because she’s responsible for these designs)
+
+[![](/wp-content/uploads/2020/11/image-4-1024x574.jpeg)](/wp-content/uploads/2020/11/image-4.jpeg)
+
+## Hot and Cold Message storage (Chat History)
+
+I took this in a few phases this sprint, my goal was to make it so I would store messages and then retrieve them when i reload the app.
+
+![](/wp-content/uploads/2020/11/image-5.png)
+
+First stage was to do it with a basic local array, simple right?\
+\
+1\. Server receives message and sends it to cache function
+
+2\. Cache function stores it in a local array
+
+3\. App joins room
+
+4\. Server sends contents of array!
+
+Obviously this fundamentally works but it’s not great if the server needs restarting, you lose all your room history! So next up, I wanted to use a memory cache.
+
+**Why a memory cache instead of a database?**
+
+When you’re building something like a chat service, messages can come in at a phenomenal rate, for example when we first launched SoSa the first 24 hours we saw 1 message every second in a single room!
+
+Now imagine 4000 rooms, all very active.
+
+I love relational databases as much as the next person but personally, I’d rather have control how much data is inserted and retrieved – creating an insert funnel allows me to scale things at a much lower cost and in a predictable way.
+
+If we lose a profile or a DM – that’s a big deal, but if we lose a chat message, it’s not a huge deal.
+
+—-
+
+So I set about implementing Redis, and then a Cache service (so I could change the type of cache I use in the future and create a local in memory fall back) as you can see the implementation isn’t much different!
+
+[![](/wp-content/uploads/2020/11/image-6.png)](/wp-content/uploads/2020/11/image-6.png)
+
+But shoot, I still want other nodes to be able to access the chat history and what happens if the chat instance goes offline – I don’t want to lose my data do I?
+
+So I implemented the concept of cold / hot storage into my ORM implementation. 
+
+What this means is that every time I send a new message, the server looks at the type of data i’m working with, if the model says it’s a “delayed” model type – it will store it in the memory cache and then after a minute, a process comes along and does all the inserts in a single blast.
+
+Retrievals will also combine the database with the memory cache for results.
+
+<figure className="aligncenter size-large is-resized"><img src="/wp-content/uploads/2020/11/image-7.png" alt="" width="580" height="312" /></figure>
+
+We don’t keep a huge number in the “delay” cache, but it means instead of 1000 inserts spread across 1 minute, it’s a single query done once every minute which should not only be quicker but reduce the amount of time any table locks may occur
+
+I made a diagram to explain the process, I hope it clarifies things.
+
+![](/wp-content/uploads/2020/11/image-8.png)
+
+## Game night
+
+![](/wp-content/uploads/2020/11/image-9.png)
+
+Next[ SoSa](https://sosa.net) game night we will be WitchIt!
+
+Sunday 13th December 1900-2100 GMT / 1200-1400 PT / 1500-1700 ET
+
+It’s time once again for Boob and belly physics and we delve into the world of WitchIt!
+
+The game recently had an update and we had so much fun playing last time around figured it was time to play again!
+
+[https://www.eventbrite.co.uk/e/sosa-gamenight-witch-it-tickets-130246198887](https://www.eventbrite.co.uk/e/sosa-gamenight-witch-it-tickets-130246198887)
+
+**Don’t have it? Don’t worry!**
+
+If you’re going to get involved and want a copy, Give me a shout and i’ll buy you a copy 🙂
+
+## Stats
+
+[LinkedIn](https://www.linkedin.com/company/sosa-community/) grew from 793 to 810
+
+[Patreon](https://www.patreon.com/sosa_community), We’re steady at 15! Shout out to Jelle for becoming a Patreon this sprint!
+
+[Our Beta List](https://sosa.net/) grew from 381 to 388
+
+[![](/wp-content/uploads/2020/11/image-10.png)](/wp-content/uploads/2020/11/image-10.png)
+
+This sprint our Average position went up from 23.2 to 22.8! Impressions are up from 3.19k to 3.4k and Click through is up slightly from 2.2% to 2.3!
+
+We’re apparently also ranking for the term “:’)”…
+
+[![](/wp-content/uploads/2020/11/image-11.png)](/wp-content/uploads/2020/11/image-11.png)
+
+Although our Linking domains are down 19, It hasn’t affected our domain authority, so that’s good news!
+
+That’s all folks!
+
+1. [Precursor](/sosa-precursor/)
+2. [Sprint 1 – The Foundations](/sosa-the-foundations/)
+3. [Sprint 2 – The ummm Foundations?](/sosa-the-ummm-foundations/)
+4. [Sprint 2 – Nerd Ramble](/nerd-ramble-sprint-2/)
+5. [Sprint 3 – Cooking with matches!](/cooking-with-matches/)
+6. [Sprint 4 – Now We’re Cooking With Gas!](/sprint-4-now-were-cooking-with-gas/)
+7. [Sprint 5 – Robot Uprising](/sprint-5-robot-uprising/)
+8. [This Is Not the Sprint You’re Looking For](/this-is-not-the-sprint-youre-looking-for/)
+9. [Sprint 6 – That’s a Weird Looking Patronus](/sprint-6-thats-a-weird-looking-patronus/)
+10. [Sprint 7 – Corona Stole My Title](/sprint-7-corona-stole-my-title/)
+11. [Sprint 8 – Adventure Time!](/sprint-8-adventure-time/)
+12. [Sprint 9 – Now In Technicolor](/sprint-9-now-in-technicolor/)
+13. [Sprint 10 – Refinement](/sprint-10-refinement/)
+14. [Sprint 11 – Motion In The Ocean](/sprint-11-motion-in-the-ocean/)
+15. [Alpha Release 1.0.3](/alpha-release-1-0-3/)
+16. [Sprint 12 – No Rest For The Wicked](/sprint-12-no-rest-for-the-wicked/)
+17. [Alpha Release 1.0.4](/alpha-release-1-0-4/)
+18. [Sprint 13 – I Need a Break](/sprint-13-i-need-a-break/)
+19. [Alpha Release 1.0.5](/alpha-release-1-0-5/)
+20. [Sprint 14 – Just James Things](/sprint-14-just-james-things/)
+21. [Sprint 15 – Wearing My Heart On My Sleeve](/sprint-15-wearing-my-heart-on-my-sleeve/)
+22. [Alpha Release 1.0.6](/alpha-release-1-0-6/)
+23. [Sprint 16 – Warm Up](/sprint-16-warm-up/)
+24. [Alpha Release 1.0.7](/alpha-release-1-0-7/)
+25. [Sprint 17 – Coffee’s back on the menu!](/sprint-17-coffees-back-on-the-menu/)
+26. [Alpha Release 1.0.8](/alpha-release-1-0-8/)
+27. [Sprint 18 – We’re on fire!](/sprint-18-were-on-fire/)
+28. [Sprint 19 – Slowly fast](/sprint-19-slowly-fast/)
+29. [Sprint 20 – Let’s get Nerdy](/sprint-20-lets-get-nerdy/)
+30. [Alpha Release 1.0.9](/alpha-release-1-0-9/)
+31. [Sprint 21 – We’re back!](/sprint-21-were-back/)
+32. [Alpha Release 1.1.0](/alpha-release-1-1-0/)
+33. Sprint 22 – You Look Cute Today
+34. [Alpha Release 1.1.1](/alpha-release-1-1-1/)
+35. [Sprint 23 – Sausage Smuggler](/sprint-23-sausage-smuggler/)
+36. [A SoSa Retrospective](/a-sosa-retrospective/)
+37. [Sprint 25 – I am SoSa and don’t call me Shirley](/sprint-25-i-am-sosa-and-dont-call-me-shirley/)
+38. [Sprint 26 – The best laid schemes of mice and men](/sprint-26-the-best-laid-schemes-of-mice-and-men/)
+39. [Sprint 27 – Vogue, Strike a Pose](/sprint-27-vogue-strike-a-pose/)
+40. [Sprint 28 – a New Hope](/sprint-28-a-new-hope/)
+41. [I Couldn’t Think Of a Title](/i-couldnt-think-of-a-title/)
+42. [Guess who’s back, Back again!](/guess-whos-back-back-again/)
+43. [Demolition Man](/demolition-man/)
+44. [Squid James](/squid-james/)
+45. [I AM STILL ALIVE](/i-am-still-alive/)
+46. [We Didn’t Choose This Life, We’re Just Living In It](/we-didnt-choose-this-life-were-just-living-in-it/)
+47. [Let’s go!](/lets-go/)

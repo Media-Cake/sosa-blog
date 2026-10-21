@@ -1,0 +1,1 @@
+export { SlugRoute } from './SlugRoute';

@@ -1,0 +1,160 @@
+---
+title: I AM STILL ALIVE
+slug: i-am-still-alive
+date: 2022-03-08T18:34:57.000Z
+modified: 2022-03-08T18:34:57.000Z
+author: admin
+image: /wp-content/uploads/2022/03/StayinAlive.png
+thumbnail: /wp-content/uploads/2022/03/StayinAlive-500x320.png
+categories:
+  - updates
+  - rebuild
+tags:
+  - community
+  - homepage
+  - eslint
+  - docker
+  - prettier
+  - typescript
+  - achitecture
+description: Hello! I wanted to give some sort of update because life and
+  depression mostly took over towards the end of last year and I've not made
+  SoSa a priority. A
+excerpt: Hello! I wanted to give some sort of update because life and depression
+  mostly took over towards the end of last year and I’ve not made SoSa a
+  priority. A bunch of stuff has still happened on SoSa, new designs, been
+  working on architecture and code but because I’m still in a weird headspace
+  i’ve...
+---
+
+Hello! I wanted to give some sort of update because life and depression mostly took over towards the end of last year and I’ve not made SoSa a priority.
+
+A bunch of stuff has still happened on SoSa, new designs, been working on architecture and code but because I’m still in a weird headspace i’ve not ready to commit myself to fortnightly updates just yet, I was doing over 2020 and most of 2021.
+
+Although, with that said, mid October was my last update and I don’t want people to think I’ve abandoned it.\
+\
+I haven’t, i’m still here! I just put my own mental health before the rebuild.
+
+## Homepage designs
+
+Explaining what I’m building across blog posts is great for anyone following the journey but if you’re new to SoSa and the concept it can be hard to get an idea of what we’re building, who’s involved etc
+
+I asked Fed (designer) to come up with some designs for a new homepage, to make it easier for someone just checking it out to get a better understanding of the project, the team that sort of thing.
+
+[![](/wp-content/uploads/2022/03/image-3-989x1024.png)](/wp-content/uploads/2022/03/image-3.png)
+
+These are the first three designs, still not quite what i’m looking for but we’re getting closer with each iteration and the copy needs updating before I build it.
+
+## Move to AWS
+
+Before I get started some terms for non-nerds
+
+- **Bare-metal server:** A whole server you rent from a company in a data center
+- **Cloud:** A piece of a server that you rent from a company
+- **AWS:** Amazon Web Services
+
+Mid November three of my bare-metal servers decided to shit the bed at almost exactly the same time, taking 10 client platforms, the OG SoSa site, SoSa blog and everything i’d built so far with it!
+
+<figure className="wp-block-image size-large"><img width="1024" height="683" src="/wp-content/uploads/2022/03/shutterstock_2047725863_1-1024x683.jpg" alt="" /><figcaption>Actually me</figcaption></figure>
+
+Luckily I had backups and I was also able to get access to the hard drives, so decided for now it was better to put everything in the cloud.\
+\
+Before SoSa goes live live, I’m hoping to find an ethical cloud provider where it can partially live. Because AWS and anything Amazon doesn’t really sit right with me.
+
+## Backend
+
+Again for the non-nerds
+
+- **Docker:&#x20;**&#x4C;et’s you turn a piece of your computer in to a development server
+- **ESLint:** A tool that enforces standards in your code, helping everything look consistent so other people can understand.
+- **Prettier:** Similar to ESLint, but more focused on Visual aesthetics of your code instead of it’s structure
+- **Refactor:** It’s where you restructure your code, make it look different but not work different. Like changing the wheels on your car
+- **Typescript:&#x20;**&#x61; computer language, based on JavaScript but allows for more descriptive code\
+  If a motorcycle is a motorcycle in JavaScript,\
+  In Typescript It’s a Ducati 916 with 21″ wheels, an aftermarket exhaust and it’s blue
+
+---
+
+I’m getting to the point with the backend where the hacky approach I took initially isn’t the right solution and development would be much quicker if I set everything up properly
+
+I’ve fixed my [Docker](https://www.docker.com/) implementation to use Docker compose instead and implemented [ESLint](https://eslint.org/) and [Prettier](https://prettier.io/).\
+\
+The intention for SoSa was always that communities could run custom versions of the server to enable more focused features depending on their community.
+
+So a Roleplay community for example could introduced game mechanics in to their server with out having to take the hacky approach most platforms take with bots.
+
+As I was doing some refactor, it seemed a good time to move the backend over to a more modular architecture with a shared core.
+
+<figure className="aligncenter size-full"><a href="/wp-content/uploads/2022/03/image.png"><img width="782" height="772" src="/wp-content/uploads/2022/03/image.png" alt="" /></a><figcaption>Something a bit like this</figcaption></figure>
+
+This would enable the code base to have a single core / framework handling auth, databases, external service communication, profiles etc. The core stuff.
+
+And the community could extend the code in the specific services they want to.
+
+This would allow a community to run custom versions of some services whilst defaulting to the global service for the rest.\
+\
+Lastly, I’ve got much more exposure to Typescript over 2021 and I found that it made working with teams much easier, it also seems to be the way technology is moving.\
+\
+So I’ve always refactored the entire backend in Typescript, which as you can imagine was quite an undertaking in itself!
+
+[![](/wp-content/uploads/2022/03/image-1-1024x143.png)](/wp-content/uploads/2022/03/image-1.png)
+
+## Auth Service
+
+For the nonus-nerdous (latin for non-nerds):
+
+- **Lamdba:** a Lambda is a part of a part of a server, It serves a single function.\
+  If a server is a multi-tool, a cloud server is a knife then a lambda is an avocado slicer
+- **PHP**: Is another computer language
+- **Ubiquity Framework:** Like a skeleton structure for making it quicker to build an application.\
+  You can make an omelette by getting a chicken, feeding it, letting it shit out an egg, clean it, and then make your omelette whilst you stare at the chicken to maintain dominance.\
+  \
+  Or you can just buy eggs. A framework is the egg, PHP is the chicken.
+
+---
+
+Along with half my life, I also lost the auth service to my servers demise.\
+As I was about to relaunch it, as this is a centralised service unlike the communities I thought to myself “You know what? this might be better as a lambda”
+
+Originally I built it in PHP, using Ubiquity Framework. This provided a range of services including
+
+- Registration
+- Login
+- Forgot Password
+- Login with imgur, reddit, fb and google
+
+On the weekend, I started rebuilding these into single services, in typescript to allow for them to scale independently.
+
+I had some problems with a AWS Toolkit which made it hard to test my code locally 🙄 so I’ve fixed that as well for them 🙂
+
+## Work / Contracting
+
+If you’ve been following, you know last year I went back to contracting. My first contract out of the gate was as a full stack engineer for an accountancy firm.
+
+Well, they decided to stop paying me mid December (because of course they would) and then dragged it out until February 2022!
+
+![](/wp-content/uploads/2022/03/scream-screaming.gif)
+
+I ended up getting a new contract with an awesome company called Rooster Money in Jan 2022 and I’ve been with them since, mostly working on Backend but I should be doing some mobile development too.
+
+Got to meet most of the team for the first time last week, which was lovely and I stayed in a spooky hotel
+
+[![](https://lh3.googleusercontent.com/ewVApPlqEPLfMorF7_jkww8GC2wk997nMdSX9hHW5dj9Y8-tu31_xD4_wpo5MiBcR48e9ZF30XNlyPB_nvxBN4jcrvsajYibtSg9l84nOaTiD0LrcKRr9utJsUatt2WU5ttxPZx1DVukxrdw2PwlCBKewM8T4-EDX8B-Z1xSi-3kM2_Sy50wz12k75nZ2-IE-zlARA2hUvVJSWTtKH1zrTy-PEk7Knce6ePAvjegPsY0hokOXe-B78lRXMNZgrfYJGI-ZgXH0xL82N5Av6e1ooTaL1GBlru_2WyFwcE3WTdHvL8vXN3DfyiFu5zEGG1KghVTdWEYUEhLm_3CP5cBq7Z08nILnfpoT0JgGx-I7mSSrNs5FtZZK3_QiIl7OHbaJA44S2-cBNaEt04rYeAC4NHWsL9Fry7feQmFG3eiSt1_EBB59kjEgx-MlGg2vev0kKkzz7N7Lrp7zdfia4ZVunN78opJKfJl2GCbWnGAiJyrbCjI1rYA3J_F5DcfbsrZk15-V_VgbglXw0riwmrLQMcB_5gbxMl4ct4_uSAbJLZrbQixaAW7epG_LRxZdFbbEIEr7Hkfoh_ggJo11Dtfa_L8TiqXzxPV_rZ1_Lbjppegw_BSHwfcWQ6rbQaRKhTmx6z-C8RMnhGHiLua4QIcDiFKeV3OP4g5FV39duWmISsYXKL8a-9IY0MSOfpa-DP95pi2OYW6wARWLwg5BFiCmX_Y=w1920-h865-no?authuser=0)](https://lh3.googleusercontent.com/ewVApPlqEPLfMorF7_jkww8GC2wk997nMdSX9hHW5dj9Y8-tu31_xD4_wpo5MiBcR48e9ZF30XNlyPB_nvxBN4jcrvsajYibtSg9l84nOaTiD0LrcKRr9utJsUatt2WU5ttxPZx1DVukxrdw2PwlCBKewM8T4-EDX8B-Z1xSi-3kM2_Sy50wz12k75nZ2-IE-zlARA2hUvVJSWTtKH1zrTy-PEk7Knce6ePAvjegPsY0hokOXe-B78lRXMNZgrfYJGI-ZgXH0xL82N5Av6e1ooTaL1GBlru_2WyFwcE3WTdHvL8vXN3DfyiFu5zEGG1KghVTdWEYUEhLm_3CP5cBq7Z08nILnfpoT0JgGx-I7mSSrNs5FtZZK3_QiIl7OHbaJA44S2-cBNaEt04rYeAC4NHWsL9Fry7feQmFG3eiSt1_EBB59kjEgx-MlGg2vev0kKkzz7N7Lrp7zdfia4ZVunN78opJKfJl2GCbWnGAiJyrbCjI1rYA3J_F5DcfbsrZk15-V_VgbglXw0riwmrLQMcB_5gbxMl4ct4_uSAbJLZrbQixaAW7epG_LRxZdFbbEIEr7Hkfoh_ggJo11Dtfa_L8TiqXzxPV_rZ1_Lbjppegw_BSHwfcWQ6rbQaRKhTmx6z-C8RMnhGHiLua4QIcDiFKeV3OP4g5FV39duWmISsYXKL8a-9IY0MSOfpa-DP95pi2OYW6wARWLwg5BFiCmX_Y=w1920-h865-no?authuser=0)
+
+Most importantly, they’re paying me!
+
+## House
+
+I actually moved in December, which honestly was just an utter disaster! I completely misjudged how much shit I had and how difficult it would be to carry things down 3 flights of stairs. Plus I was moving in to what was essentially a building site!
+
+<figure className="aligncenter is-resized"><a href="https://lh3.googleusercontent.com/z_kETV37Dh0weaSU6YD45cMpSziDXMhCWVIGU3B6SALFqApOhPVU1hdgyGrvZ7G85OjMcgoWARpDaPGMrf0qoqr7qpw16aJCCbA_bJt9DczahkIhjS-E0CP6xTX-tK49I0kdP3DYeQpbUSv0ZKmVh-gxPIFPqzw2UKF_7Ujch5FFav5NHRSOg2W5to1XQJyDZzfI5jTQE7TdS6J-p5zyqNU38S-IePCNclQkK84I8GTUSfEQr_1JXwzW4fsSJhiArp3d1F98_P8vSyVVzyaLCO-YuGX8qzdNAq1FHW5o_0TfinmuXJY4F6fbEpnG-6nwS7MsHg_JozTMadUp32bxhNVznbE4sTpbIqNUt27eeYsKXF9oGkalrZFQO_oqo7Jj4G2pS_3dFjdcmV-EG57hB0oRWpCMFLl2fHlQ_jMEVezQIlERY39GvcQqWimVzF5u0oQR3OmF-vR3kWnWsewdv-UIPmHc9uaSuxJjTolH1zcEJ5j3BkFxVOpEzQEFxVZflZBrkwtly0mjmIxC5dIfqaRqoTFm_thwurKLD0s3omE1OACM26MezE9Sq0noDv_cgxYcWI5Ww8OOriNJuekWEghGJqe2dJHzPSWR0diK72-g7J4YmZwSpN6P5CSwGznNqs1lAw2OSuwgSDTBUVvcyXdXF1qjUVeN3gW0r2etX424jegwNiO56jl2izHoljV3SbyDIPaXPNnxhETXtJraGDGo=w1920-h865-no?authuser=0"><img src="https://lh3.googleusercontent.com/z_kETV37Dh0weaSU6YD45cMpSziDXMhCWVIGU3B6SALFqApOhPVU1hdgyGrvZ7G85OjMcgoWARpDaPGMrf0qoqr7qpw16aJCCbA_bJt9DczahkIhjS-E0CP6xTX-tK49I0kdP3DYeQpbUSv0ZKmVh-gxPIFPqzw2UKF_7Ujch5FFav5NHRSOg2W5to1XQJyDZzfI5jTQE7TdS6J-p5zyqNU38S-IePCNclQkK84I8GTUSfEQr_1JXwzW4fsSJhiArp3d1F98_P8vSyVVzyaLCO-YuGX8qzdNAq1FHW5o_0TfinmuXJY4F6fbEpnG-6nwS7MsHg_JozTMadUp32bxhNVznbE4sTpbIqNUt27eeYsKXF9oGkalrZFQO_oqo7Jj4G2pS_3dFjdcmV-EG57hB0oRWpCMFLl2fHlQ_jMEVezQIlERY39GvcQqWimVzF5u0oQR3OmF-vR3kWnWsewdv-UIPmHc9uaSuxJjTolH1zcEJ5j3BkFxVOpEzQEFxVZflZBrkwtly0mjmIxC5dIfqaRqoTFm_thwurKLD0s3omE1OACM26MezE9Sq0noDv_cgxYcWI5Ww8OOriNJuekWEghGJqe2dJHzPSWR0diK72-g7J4YmZwSpN6P5CSwGznNqs1lAw2OSuwgSDTBUVvcyXdXF1qjUVeN3gW0r2etX424jegwNiO56jl2izHoljV3SbyDIPaXPNnxhETXtJraGDGo=w1920-h865-no?authuser=0" alt="" width="840" height="378" /></a><figcaption>This wasn’t even half of it.</figcaption></figure>
+
+The work on the house hasn’t really gone anywhere since early Jan, I’ve been too depressed with the work situation in December and then just general SAD it’s been hard to find motivation.
+
+I did fix a hole in my floor thought, so I have that going for me!
+
+[![](/wp-content/uploads/2022/03/image-2-1024x661.png)](/wp-content/uploads/2022/03/image-2.png)
+
+Also plumber friend replumbed all my heating and put two new radiators in and fixed my hob! however, the first night I managed to drill a hole in one of the pipes 🤦
+
+![](https://lh3.googleusercontent.com/tpecL3B71qHm7EWSC9uKXcqVJbJFR5qhMtfFbNgysi0xv4dxIafmSBfVqZOIKeoQ6ufrJ6mvdJmgfgz01jkp2THuoU9j5Tda8NAZm5_kqMdIk5O63hGvZ9lojaQkO5XZlg8DYQ4Lm7oc5SaI4G9b3e9NBKvpaW5s-BjBYnFEuiUj0syW0chpt5_UW6-jiD0_if9yUMDwKX3873nPUpiPb655PtaEDd1CsacoZBeoBAK5AacJu3SOCiUrgg4qVqi1v3_mmiwgxRbtNpTc2tZVl6nPXviqgtLXVdAW6PM6bjdzzprFRG_lYEZwtY7fZalBjATt2b7bbQ1imdSFJJI5uMVmZM4gF2gL5feN5fI-3aqzCkuRF5wS5darleywend-_-5WnSnuNKeTiduZrj35j-1n_XAF1gzNH49bfX8Mp6CWje3nzLc4GfTEYW-Xp7YsxgImdEOdReHZZp3_DtQeIjP8WsflhTibgPmqZWjpTc8r-pVfduUJuAwNUI_eaIKCrsz3fkIjYmSzekEflZMA1exYVedYgCU0QWOH-9aE8t5w_WAFpdlW0qTDMDuR52DNvGEZPlwKisAR6FzDciC445YoowfeU8waexjl_98BlxMhxu3WQ-2CvPkh05ViM_uuG1d2-NL23Kg0uqp7-lWp449qpWq--3_1hSpjYvRbaqqPOUsHZu2_Cq9_fqn7GgS9Rfw3l3kJS4MwQYeLTc2D3yhy=w1920-h865-no?authuser=0)

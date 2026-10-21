@@ -1,0 +1,74 @@
+{
+  "site": {
+    "name": "SoSa",
+    "title": "Blog | SoSa",
+    "titleTemplate": "{{title}} | SoSa",
+    "description": "Checkout our blog for the latest news, updates and game nights for SoSa! Returning to Web, Desktop and Mobile in 2020. Sign up to our beta today!"
+  },
+  "header": {
+    "brandFirst": "SoSa",
+    "brandSecond": "Blog",
+    "sosaHome": "SoSa",
+    "facebook": "Facebook",
+    "twitter": "Twitter",
+    "youtube": "YouTube",
+    "steam": "Steam",
+    "linkedin": "LinkedIn"
+  },
+  "footer": {
+    "copyright": "© {{year}} ",
+    "company": "Media Cake Limited"
+  },
+  "postCard": {
+    "byline": "{{date}} by ",
+    "readFullPost": "Read Full Post"
+  },
+  "pagination": {
+    "previous": "← Previous",
+    "next": "Next →",
+    "gap": "…",
+    "label": "Posts navigation"
+  },
+  "listing": {
+    "noPosts": "Sorry, there doesn't seem to be any posts here.",
+    "monthlyArchives": "Monthly Archives: ",
+    "yearlyArchives": "Yearly Archives: "
+  },
+  "post": {
+    "viewAllIn": "View all posts in {{name}}",
+    "comments": "Comments",
+    "previous": "← {{title}}",
+    "next": "{{title}} →"
+  },
+  "sidebar": {
+    "helpMeMakeSosa": "Help Me Make SoSa",
+    "yourName": "Your name",
+    "yourEmail": "Your e-mail!",
+    "joinBeta": "Join Beta",
+    "becomeAPatron": "Become a patron",
+    "otherPosts": "Other Posts You'll Love",
+    "followUs": "Follow us:"
+  },
+  "social": {
+    "facebook": "Facebook",
+    "twitter": "Twitter",
+    "youtube": "YouTube",
+    "linkedin": "LinkedIn"
+  },
+  "contact": {
+    "title": "Contact Us",
+    "getInTouch": "Get in touch",
+    "socialMedia": "Social Media",
+    "yourName": "Your Name (required)",
+    "yourEmail": "Your Email (required)",
+    "yourMessage": "Your Message",
+    "send": "Send",
+    "emailSubject": "Message from {{name}} via blog.sosa.net"
+  },
+  "notFound": {
+    "title": "The princess you're looking for is in another castle",
+    "pageTitle": "Page not found",
+    "sorry": "Sorry, we tried our best but couldn't find the page you were looking for.",
+    "learnMore": "You can learn more about <sosa>SoSa</sosa> by visiting <link>https://sosa.net</link> or check out some other great posts on this page!"
+  }
+}

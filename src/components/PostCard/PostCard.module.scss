@@ -1,0 +1,52 @@
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  min-height: 65vh;
+  word-wrap: break-word;
+  background: none;
+  border: 0;
+  border-radius: 0.25rem;
+  color: var(--sosa-text);
+
+  a {
+    color: var(--sosa-text);
+  }
+}
+
+.image {
+  flex-shrink: 0;
+  width: 100%;
+  border-top-left-radius: calc(0.25rem - 1px);
+  border-top-right-radius: calc(0.25rem - 1px);
+}
+
+.body {
+  flex: 1 1 auto;
+  min-height: 1px;
+  padding: 1.25rem;
+  background: var(--sosa-surface);
+  font-size: 95%;
+}
+
+.small {
+  font-size: 90%;
+  font-weight: 400;
+}
+
+.title {
+  margin-bottom: 0.75rem;
+}
+
+.text {
+  font-size: inherit;
+}
+
+.readMore {
+  font-weight: bold;
+
+  a {
+    color: var(--sosa-text);
+  }
+}

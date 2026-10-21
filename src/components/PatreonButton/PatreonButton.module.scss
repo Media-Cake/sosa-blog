@@ -1,0 +1,24 @@
+.button {
+  display: inline-block;
+  border-radius: 1rem;
+  background-color: rgb(232, 91, 70);
+  padding: 0.5rem 1.5rem;
+  text-align: center;
+  font-size: 0.875rem;
+  font-weight: 500;
+  font-family:
+    'America', 'GT America', 'Lato', 'Helvetica Neue', 'Helvetica', 'Arial',
+    sans-serif;
+  color: var(--sosa-text);
+
+  &:hover {
+    text-decoration: none;
+    color: var(--sosa-text);
+  }
+
+  img {
+    width: 1rem;
+    height: 1rem;
+    margin-right: 0.25rem;
+  }
+}

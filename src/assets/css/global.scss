@@ -1,0 +1,94 @@
+@use 'fonts';
+@use 'content';
+
+:root {
+  --sosa-background: #121211;
+  --sosa-surface: #444442;
+  --sosa-surface-dark: #161512;
+  --sosa-surface-darker: #2b2b2b;
+  --sosa-text: #fff;
+  --sosa-accent: #7ac256;
+  --sosa-muted: #ccc;
+  --sosa-font-body: 'Open Sans', sans-serif;
+  --sosa-font-heading: 'koch_geometricmedium', 'Myriad Pro', Arial;
+  --sosa-font-heading-light: 'koch_geometricregular', 'Myriad Pro', Arial;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--sosa-background);
+  color: #000;
+  font-family: var(--sosa-font-body);
+  font-size: 1rem;
+  line-height: 1.5;
+  margin: 0;
+  padding: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-family: var(--sosa-font-heading);
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+h1 {
+  font-size: 2.5rem;
+}
+
+h2 {
+  font-size: 2rem;
+}
+
+h3 {
+  font-size: 1.75rem;
+}
+
+h4 {
+  font-size: 1.5rem;
+}
+
+h5 {
+  font-size: 1.25rem;
+}
+
+h1,
+h2,
+h3 {
+  color: var(--sosa-text);
+}
+
+p {
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+img {
+  border: none;
+  vertical-align: middle;
+}
+
+ul,
+ol {
+  margin-top: 0;
+  margin-bottom: 1rem;
+}

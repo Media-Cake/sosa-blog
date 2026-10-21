@@ -1,0 +1,81 @@
+---
+title: Alpha Release 1.0.8
+slug: alpha-release-1-0-8
+date: 2020-09-14T11:51:24.000Z
+modified: 2020-09-14T12:40:33.000Z
+author: james
+image: /wp-content/uploads/2020/09/alpha-1.0.8.jpg
+thumbnail: /wp-content/uploads/2020/09/alpha-1.0.8-500x320.jpg
+categories:
+  - updates
+  - tech
+  - rebuild
+tags:
+  - meetups
+  - bugs
+  - alpha
+  - settings
+  - welcome
+  - sidebar
+description: I've started making videos each release, I might get fancier with
+  them next update but for now I thought I'd keep it simple - the write up below
+  gives
+excerpt: I’ve started making videos each release, I might get fancier with them
+  next update but for now I thought I’d keep it simple – the write up below
+  gives much more information! Welcome Screen This one’s been a long time
+  coming, when you sign up to SoSa, it’s important you get a username you
+  want...
+---
+
+I’ve started making videos each release, I might get fancier with them next update but for now I thought I’d keep it simple – the write up below gives much more information!
+
+<figure className="wp-block-embed-youtube aligncenter wp-block-embed is-type-video is-provider-youtube h-50 w-50 mx-auto"><div className="wp-block-embed__wrapper"><iframe title="SoSa - Alpha Release 1.0.8" width="500" height="281" src="https://www.youtube.com/embed/_3e26UdnJ4o?feature=oembed" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen /></div></figure>
+
+## Welcome Screen
+
+This one’s been a long time coming, when you sign up to SoSa, it’s important you get a username you want and so that we can confirm your e-mail address.
+
+This sprint I built the welcome screen that allows you to confirm your username and e-mail address before being allowed into the community!
+
+<figure className="aligncenter size-large is-resized"><a href="/wp-content/uploads/2020/09/image-4.jpeg"><img src="/wp-content/uploads/2020/09/image-4-1021x1024.jpeg" alt="New welcome screen" width="766" height="768" /></a></figure>
+
+## Sidebar changes
+
+Firstly, a few Alpha testers brought up that they didn’t like the blue. I think it was left over from me testing so wasn’t a major issue to change.
+
+<figure className="aligncenter size-large is-resized"><a href="/wp-content/uploads/2020/09/image-5.jpeg"><img src="/wp-content/uploads/2020/09/image-5-1021x1024.jpeg" alt="Difference between the two side bars" width="766" height="768" /></a></figure>
+
+I tried a few different colours with their feedback and settled on a lighter grey to keep it consistent with the colour scheme but make it stand out from other components.
+
+[![Tester saying they have fat fingers](/wp-content/uploads/2020/09/image-7.png)](/wp-content/uploads/2020/09/image-7.png)
+
+Apparently one of my testers has fat fingers, I know him irl, he doesn’t. But I’m not going to question his inability to press buttons so I put them further apart!
+
+## Meetup back button
+
+It’s the little things in life that make a big difference, and apparently a back button is one of those things!
+
+Last release you had to build
+
+<figure className="aligncenter size-large is-resized"><a href="/wp-content/uploads/2020/09/image-8.png"><img src="/wp-content/uploads/2020/09/image-8-1024x432.png" alt="Showing the back button at the top of the screen" width="768" height="324" /></a></figure>
+
+## Confusing Settings
+
+In the last release, for chat we had the ability to add separators to messages and if that was enabled you could then make them slim.
+
+The problem was, this was confusing and the slim setting wasn’t obvious without a ruler.
+
+So now i’ve made the settings separate – you don’t need separators on to make the messages slimmer.
+
+<figure className="aligncenter size-large is-resized"><a href="/wp-content/uploads/2020/09/image-6.jpeg"><img src="/wp-content/uploads/2020/09/image-6.jpeg" alt="Showing the old settings vs the new settings" width="572" height="287" /></a></figure>
+
+## Bug Fixes
+
+- **Warning when opening the user list**\
+  this mainly happened in the development environment but whenever you would open the User List it would show a little warning saying there wasn’t a unique key for the prop. This has now been fixed!
+- **Error when registration fails**__\&#xA;__&#x57;hen registration was failing, it was failing silently, now it shows a message with the error
+- **iOS bugs**
+
+There were two reported bugs, Pressing “Going” on a meetup wasn’t working and when you log out and log back in it wouldn’t let you. I tested both of these and couldn’t reproduce on iOS 13.5.
+
+I’m assuming they were internet related, which i’ll address when we’re closer to beta.

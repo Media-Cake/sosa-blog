@@ -1,0 +1,69 @@
+.masthead {
+  position: relative;
+}
+
+.navbar {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem 1rem;
+}
+
+.brand {
+  display: inline-block;
+  margin-right: 1rem;
+  font-size: 1.25rem;
+  line-height: inherit;
+  white-space: nowrap;
+  color: var(--sosa-text);
+
+  h1 {
+    font-family: var(--sosa-font-heading);
+    font-size: 2.5rem;
+    margin: 0;
+  }
+
+  h2 {
+    font-family: var(--sosa-font-heading-light);
+    font-size: 2.5rem;
+    margin: 0;
+  }
+
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+.navItem {
+  list-style: none;
+}
+
+.social {
+  flex-direction: row;
+  padding-left: 0;
+  margin: 0.25em 0;
+  list-style: none;
+}
+
+.socialLink {
+  display: block;
+  padding: 0 1em;
+  color: var(--sosa-muted);
+
+  svg {
+    font-size: 1.5em;
+  }
+
+  &:hover {
+    color: var(--sosa-text);
+  }
+}
+
+@media (min-width: 992px) {
+  .navbar {
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+  }
+}

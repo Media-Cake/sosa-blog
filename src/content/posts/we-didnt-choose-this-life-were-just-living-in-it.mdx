@@ -1,0 +1,180 @@
+---
+title: We Didn’t Choose This Life, We’re Just Living In It
+slug: we-didnt-choose-this-life-were-just-living-in-it
+date: 2022-07-02T11:44:00.000Z
+modified: 2022-07-02T11:44:01.000Z
+author: james
+image: /wp-content/uploads/2022/07/we-didnt-choose-this-life-were-just-living-in-it.jpg
+thumbnail: /wp-content/uploads/2022/07/we-didnt-choose-this-life-were-just-living-in-it-500x320.jpg
+categories:
+  - updates
+  - tech
+  - the-real-world
+  - rebuild
+tags:
+  - security
+  - work
+  - house
+  - architecture
+  - auth-service
+  - monolith
+  - microservice
+  - lambda
+description: Hmmm, how do I start this? Maybe, "To whom it may concern" no no
+  that's too formal, "Hello!" Does that work? No, you're right it feels a bit
+  excitable.
+excerpt: Hmmm, how do I start this? Maybe, “To whom it may concern” no no that’s
+  too formal, “Hello!” Does that work? No, you’re right it feels a bit
+  excitable. “Hi” Yes, Hi! I like that. Now we’ve got the formalities out of the
+  way, how are you? have you been well? Wouldn’t be cool if...
+---
+
+Hmmm, how do I start this?
+
+Maybe, “To whom it may concern” no no that’s too formal,
+
+“Hello!” Does that work? No, you’re right it feels a bit excitable.
+
+“Hi” Yes, Hi! I like that.
+
+Now we’ve got the formalities out of the way, how are you? have you been well?\
+Wouldn’t be cool if I made those questions interactive – maybe next time!
+
+Me? I’m great thank you, I thought I would share a SoSa update since my [mumbling in March](/i-am-still-alive/)
+
+## The Loop
+
+[![](/wp-content/uploads/2022/07/48320269-711b-43ce-b8c9-4673e9d0de63.png)](/wp-content/uploads/2022/07/48320269-711b-43ce-b8c9-4673e9d0de63.png)
+
+Recently I decided I needed to take time off. I hadn’t really recovered from the stress of 2021 and it was impacting how I was making decisions in my day to day life. I felt like I had no control.
+
+So the company I contract with agree’d to pause my contract for 2 weeks whilst I worked through some things.
+
+During the time, I came to the realisation that I was stuck in this loop, so afraid of over working myself I would do anything but work outside of work hours. Often leading to whole weekends of gaming.\
+\
+Great right? who doesn’t love to game all day.
+
+[![](/wp-content/uploads/2022/07/shutterstock_1146783353_1-1024x576.jpg)](/wp-content/uploads/2022/07/shutterstock_1146783353_1.jpg)
+
+I really wanted to work on SoSa, work on my house and I had zero passion to do it so the whole cycle was making me more and more depressed.
+
+**Going forward**….
+
+Weekdays – I will be working on SoSa and bits of the house at lunch.\
+Weekends – Gaming, Larger house work\
+\
+So far this has worked well for me and I feel much happier in general, and I hope you will start to see more regular updates from me again going forward!
+
+## Architecture
+
+<figure className="aligncenter size-large is-resized"><a href="/wp-content/uploads/2022/07/shutterstock_242400349_1.jpg"><img src="/wp-content/uploads/2022/07/shutterstock_242400349_1-1024x682.jpg" alt="" width="841" height="560" /></a></figure>
+
+In my last ramble I talked a lot about restructuring the backend services and that design decision has progressed a bit further.
+
+One of the biggest pain points for a lot of businesses is transitioning their code base as they grow.
+
+Usually when people start out, they’re rushed to deliver a hacky MVP (Minimum Viable Product), usually as a monolith but as their product scales, they usually need to split that monolith in to microservices and eventually to lambdas.
+
+---
+
+For any non-techies reading this, imagine a monolith, microservice and a lamdba are retail outlets
+
+**Monolith**
+
+A monolith is like a Shopping Mall, you can get everything you need under one roof, you got your shops, you can stop for some food, even get your hair done.
+
+It’s one code base that holds everything your product does. It is the entire product.\
+\
+**Microservice**
+
+Think of a micro service more like a modern large Supermarket like Asda or Walmart, It does a bunch of different things but it has an overall specialism. You go there to do your grocery shopping, but you can also grab a cheap coffee or a gun or whatever whilst you’re there.\
+\
+A microservice is more specialised than a monolith, it has a specific goal say an authentication service.
+
+**Lambda**
+
+A lambda, I feel, is most like a hotdog stand. It’s very specialist, they only sell one type of thing a Hot dog but they’re really good at it.
+
+A lambda is like taking one part of your microservice and running it really well.
+
+---
+
+For reference, the original SoSa that serviced 100,000+ users was structured as a monolith.
+
+This time around however, because I’m not focused on a “business” or investment or anything like that, I have much more time to get things built in a way that supports growth.
+
+So the approach I’m thinking of taking i’m taking is this:
+
+![](/wp-content/uploads/2022/07/7a6202d0-2d05-4bea-9663-a84ef7d5fe94-1024x585.png)
+
+The plan is to take a microservice architecture approach with more specialised services (auth, profiles, messaging, community etc) but build them in a way that they can either be deployed as a microservice or a set of lambdas.
+
+Each service will contain the deployment code for both, allowing it to be deployed either to bare metal servers (proxmox) or AWS (in both configurations).\
+\
+And because it will make development and some testing easier and allow me to build spin offs.\
+I’m going to build a wrapper that pulls down all of the services, and the front end to launch a local Monolith.
+
+I hope this approach will not only make it easier to keep costs down and allow for better scalability than the original SoSa had.
+
+## Auth Service
+
+Over the last few weeks, i’ve continued to work on the Auth service and i’ve now implemented
+
+- Registration
+- Forgotten password
+- User / Password Login
+- Imgur Login
+- Reddit Login
+- Google Login
+- Facebook Login
+- Hot Reloading
+- JWT based sessions
+
+I’ve also taken a bit of an unconventional approach with the “code” verification, usually in an OAuth flow, when you get the code back from say Google or Reddit the client then sends this directly to the backend to verify.
+
+I didn’t like how much trust we’re putting on the client to be the same client which made the initial request.
+
+So to be consistent with our Login flow, we now send a device secret at the start of the flow which is used to secure JWTs to / from the server.
+
+This is only ever sent once at login and can be used as another line of defence against certain types of attacks.
+
+![](/wp-content/uploads/2022/07/edb66e4a-6daa-4cc0-a8be-a9174a615afb-1-1024x670.png)
+
+Next for the Auth service is to
+
+- Add Unit tests
+- Build a Swagger / Postman / Similar file
+- Implement AWS AppConfig
+- Build deployment scripts
+
+It’s really satisfying building something to it’s completion instead of “this’ll do” approach so i’m excited to see this finished and move on to the next service using auth service as a framework for what “good” looks like.
+
+## Work / Contract
+
+I’m still with [Rooster Money](https://roostermoney.com/), they’ve been awesome and I’m really enjoying my time there. I’m getting to work on a bunch of different technologies and areas of the business which I love.
+
+They’ve also just renewed me for another six months, so that’s exciting and gives me stability now until next year.
+
+![](/wp-content/uploads/2022/07/party.gif)
+
+## House
+
+The saga of the house continues, I feel like not a week goes by where I don’t find more major issues left by a previous owner.
+
+My favourite so far has to be the rotting joist that someone thought they would fix with construction foam 🤦‍♂️
+
+[![](/wp-content/uploads/2022/07/20220614_174122-1-1024x461.jpg)](/wp-content/uploads/2022/07/20220614_174122-1.jpg)
+
+Thankfully that and the other rotting joists are supported by a load bearing wall but I do have to remove the rotten joists, seal the outer wall, build a bridge and put new joist pieces in!
+
+Before Summer hit, I wanted to get control of my garden too. Speaking to my neighbours it’s never been looked after and it has overgrown a little bit….
+
+![](/wp-content/uploads/2022/07/20220507_153342-3-1024x461.jpg) ![](/wp-content/uploads/2022/07/20220426_175234-1-1024x461.jpg) ![](/wp-content/uploads/2022/07/20220617_190444-1-1024x461.jpg)
+
+Took a few weekends and It’s not going to win any beauty prizes, still a shit load to go but at-least it’s not a complete eyesore now and I can maintain it.
+
+![](/wp-content/uploads/2022/07/gardennow-1024x487.jpg)
+
+As for the insides, they’re still a work in progress. Taking the time off has rinsed most of my savings so I’ve now officially run out of money and just doing what I can whilst I save up some cash.
+
+I should be able to put some serious effort in to it in a couple of months again 🙂

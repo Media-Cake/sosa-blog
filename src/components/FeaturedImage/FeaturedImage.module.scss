@@ -1,0 +1,36 @@
+.featured {
+  height: 400px;
+  background-size: cover;
+  background-position: center center;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  position: relative;
+  background-image: url('../../assets/img/lowdetailfaces.jpg');
+}
+
+.notFound {
+  background-image: url('../../assets/img/404.jpg');
+}
+
+.overlay {
+  background: rgba(0, 0, 0, 0.8);
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.bottom {
+  padding: 20px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
+.title {
+  color: var(--sosa-text);
+  position: relative;
+}

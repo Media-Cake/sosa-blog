@@ -1,0 +1,1 @@
+export { TagArchive } from './TagArchive';

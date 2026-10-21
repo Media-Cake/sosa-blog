@@ -1,0 +1,105 @@
+---
+title: Alpha Release 1.1.1
+slug: alpha-release-1-1-1
+date: 2020-12-06T15:57:21.000Z
+modified: 2020-12-06T16:02:05.000Z
+author: admin
+image: /wp-content/uploads/2020/12/Sprint1.1.1.jpg
+thumbnail: /wp-content/uploads/2020/12/Sprint1.1.1-500x320.jpg
+categories:
+  - updates
+  - rebuild
+tags:
+  - comments
+  - meetups
+  - bugs
+  - uploads
+  - cats
+  - modals
+  - performance
+description: I’d like to welcome Kira to the Alpha team!, I’m starting to add
+  more people to Alpha to help smash out those bugs! If you’d like to get
+  involved just let
+excerpt: I’d like to welcome Kira to the Alpha team!, I’m starting to add more
+  people to Alpha to help smash out those bugs! If you’d like to get involved
+  just let me know 🙂 As before, a lot of work has been done for this release
+  during this sprint so i’ll share what the Alpha...
+---
+
+I’d like to welcome Kira to the Alpha team!, I’m starting to add more people to Alpha to help smash out those bugs! If you’d like to get involved just let me know 🙂
+
+As before, a lot of work has been done for this release during this sprint so i’ll share what the Alpha testers are getting there and anything backend etc here!
+
+PS: Sorry for the Android performance in this video – MacOS and the android emulator do not get along! I’m looking for alternatives!
+
+<figure className="wp-block-embed-youtube aligncenter wp-block-embed is-type-video is-provider-youtube wp-embed-aspect-16-9 wp-has-aspect-ratio wp-embed-aspect-4-3"><div className="wp-block-embed__wrapper"><iframe title="SoSa - Alpha Release 1.1.1" width="500" height="281" src="https://www.youtube.com/embed/PL4F2gSspyY?feature=oembed" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen /></div></figure>
+
+## Multiple Uploads and Previews
+
+A few of the alpha testers didn’t like that when you upload a picture it would just throw it into chat, which i understand – it’s nice to have that extra layer of protection.
+
+Also, quite often you want to share more than one image or add some text with the image you’re sharing, so I combined the two.
+
+[![Obviously have to start by uploading cat pictures](/wp-content/uploads/2020/12/image-1024x702.png)](/wp-content/uploads/2020/12/image.png)
+
+Now when you upload a picture, it’ll add it to the list at the bottom. When you’re ready to send just hit the send button!
+
+If you press on an image, it’ll show a preview and if you press and hold the image it’ll let you remove it from the list
+
+## Meetup Validation
+
+Last release, I forgot to add meetup validation… that meant that the testers struggled to create meetups unless they met my very strict requirements.
+
+This sprint I’ve extended the area in a few ways to inform the user.
+
+The first way is to have field specific errors, whether one field is wrong or all of them are, the app will now display a little box below the fields with an error message and also highlight the input with a red border so it’s really clear what needs to be fixed.
+
+[![I'd just like to be clear, i do not agree with going back in time!](/wp-content/uploads/2020/12/image-1.png)](/wp-content/uploads/2020/12/image-1.png)
+
+Next up and you probably noticed it in the last screenshot, but fields that have a minimum number of characters will now show how many characters are left in light grey! this will count down until you’re good.
+
+This shows in two different states, if you’ve not entered anything it’ll show a different message to if you have.
+
+![Honestly, I don't actually type like this I do it in one go!](/wp-content/uploads/2020/12/image-2-1024x351.png)
+
+Last but not least, I’ve had the “Create” button change states, grey when the form isn’t valid and green when it is! 
+
+Hopefully this means that it’s really clear to the user when they’ve gotten everything right!
+
+<figure className="aligncenter size-large is-resized"><a href="/wp-content/uploads/2020/12/image-3.png"><img src="/wp-content/uploads/2020/12/image-3.png" alt="Like traffic lights, well not exactly - a little bit different!" width="714" height="734" /></a></figure>
+
+## Comments
+
+Last few sprints we’ve been using dummy comments for meetups, this sprint I added comments to the backend and the basic functionality to the App.
+
+<figure className="aligncenter size-large is-resized"><a href="/wp-content/uploads/2020/12/image-4.png"><img src="/wp-content/uploads/2020/12/image-4-996x1024.png" alt="This is exactly how I handle any sort of decision..." width="747" height="768" /></a></figure>
+
+Adding a comment is as simple as sending a message in chat (they use the same interface…) it currently scrolls to the top of the comments when you add one and the whole area is scrollable (it hides the description as you scroll)
+
+Obviously a lot more work to do here but I think it’s a great start!
+
+## Modals
+
+I got bored with seeing those horrible white popups, a couple still exist but i’ve built a custom one and started replacing them. This also allows for more dynamic content (images etc) for when we start getting a design in!
+
+[![It's the same but different](/wp-content/uploads/2020/12/image-5.png)](/wp-content/uploads/2020/12/image-5.png)
+
+## Performance tweaks / Clean up
+
+With more and more moving parts, I’m starting to see some UI lag especially in chat when there are lot’s of images.
+
+So this sprint i’ve spent a bit of time improving chat’s performance and replacing all the images in the app with “FastImage” There’s still a lot more to go here, but it’s a good start – as we get closer to beta I’ll do memory, cpu and battery profiling to narrow down any major bottlenecks.
+
+But hopefully doing this every so often should get us closer to that goal sooner.
+
+## Bug – Social network login not working
+
+I broke this a couple sprints ago, my bad, I didn’t realise react native runs differently when a browser is attached to it (for debugging) than it does when there isn’t. so Javascript functions like atob aren’t available unless you have the browser attached…
+
+Pretty silly, but I should have caught it sooner! Thanks to Jette for pointing this one out
+
+## Bug – History
+
+Last sprint I introduced chat history! however I didn’t think to test the ordering it was retrieved back in! this was mainly a bug down to my implementation of Redis, i didn’t realise the set I was adding to wasn’t ordered.
+
+I’ve fixed this now… hopefully!

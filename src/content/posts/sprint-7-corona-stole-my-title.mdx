@@ -1,0 +1,193 @@
+---
+title: Sprint 7 – Corona Stole My Title
+slug: sprint-7-corona-stole-my-title
+date: 2020-04-13T15:48:55.000Z
+modified: 2020-04-13T15:48:56.000Z
+author: james
+image: /wp-content/uploads/2020/04/shutterstock_1016221444_1.jpg
+thumbnail: /wp-content/uploads/2020/04/shutterstock_1016221444_1-500x320.jpg
+categories:
+  - updates
+  - tech
+  - community
+  - rebuild
+tags:
+  - login
+  - security
+  - game-night
+  - garrys-mod
+  - sprint-7
+  - forgot-password
+  - film
+  - corona-night
+  - disney-land
+description: Thank you to everyone who sent me well wishes after my last update.
+  Thankfully I feel much better now, I’m sleeping and the headaches have gone :)
+  which
+excerpt: Thank you to everyone who sent me well wishes after my last update.
+  Thankfully I feel much better now, I’m sleeping and the headaches have gone 🙂
+  which means I managed to get a fair amount done this sprint! 🥳 If you’re
+  reading this, I’d love to hear from you! Let me know how you’re...
+---
+
+Thank you to everyone who sent me well wishes after my last update. Thankfully I feel much better now, I’m sleeping and the headaches have gone 🙂 which means I managed to get a fair amount done this sprint! 🥳
+
+If you’re reading this, I’d love to hear from you! Let me know how you’re getting on with the current crisis 😊
+
+1. [Precursor](/sosa-precursor/)
+2. [Sprint 1 – The Foundations](/sosa-the-foundations/)
+3. [Sprint 2 – The ummm Foundations?](/sosa-the-ummm-foundations/)
+4. [Sprint 2 – Nerd Ramble](/nerd-ramble-sprint-2/)
+5. [Sprint 3 – Cooking with matches!](/cooking-with-matches/)
+6. [Sprint 4 – Now We’re Cooking With Gas!](/sprint-4-now-were-cooking-with-gas/)
+7. [Sprint 5 – Robot Uprising](/sprint-5-robot-uprising/)
+8. [This Is Not the Sprint You’re Looking For](/this-is-not-the-sprint-youre-looking-for/)
+9. [Sprint 6 – That’s a Weird Looking Patronus](/sprint-6-thats-a-weird-looking-patronus/)
+10. Sprint 7 – Corona Stole My Title
+11. [Sprint 8 – Adventure Time!](/sprint-8-adventure-time/)
+12. [Sprint 9 – Now In Technicolor](/sprint-9-now-in-technicolor/)
+13. [Sprint 10 – Refinement](/sprint-10-refinement/)
+14. [Sprint 11 – Motion In The Ocean](/sprint-11-motion-in-the-ocean/)
+15. [Alpha Release 1.0.3](/alpha-release-1-0-3/)
+16. [Sprint 12 – No Rest For The Wicked](/sprint-12-no-rest-for-the-wicked/)
+17. [Alpha Release 1.0.4](/alpha-release-1-0-4/)
+18. [Sprint 13 – I Need a Break](/sprint-13-i-need-a-break/)
+19. [Alpha Release 1.0.5](/alpha-release-1-0-5/)
+20. [Sprint 14 – Just James Things](/sprint-14-just-james-things/)
+21. [Sprint 15 – Wearing My Heart On My Sleeve](/sprint-15-wearing-my-heart-on-my-sleeve/)
+22. [Alpha Release 1.0.6](/alpha-release-1-0-6/)
+23. [Sprint 16 – Warm Up](/sprint-16-warm-up/)
+24. [Alpha Release 1.0.7](/alpha-release-1-0-7/)
+25. [Sprint 17 – Coffee’s back on the menu!](/sprint-17-coffees-back-on-the-menu/)
+26. [Alpha Release 1.0.8](/alpha-release-1-0-8/)
+27. [Sprint 18 – We’re on fire!](/sprint-18-were-on-fire/)
+28. [Sprint 19 – Slowly fast](/sprint-19-slowly-fast/)
+29. [Sprint 20 – Let’s get Nerdy](/sprint-20-lets-get-nerdy/)
+30. [Alpha Release 1.0.9](/alpha-release-1-0-9/)
+31. [Sprint 21 – We’re back!](/sprint-21-were-back/)
+32. [Alpha Release 1.1.0](/alpha-release-1-1-0/)
+33. [Sprint 22 – You Look Cute Today](/sprint-22-you-look-cute-today/)
+34. [Alpha Release 1.1.1](/alpha-release-1-1-1/)
+35. [Sprint 23 – Sausage Smuggler](/sprint-23-sausage-smuggler/)
+36. [A SoSa Retrospective](/a-sosa-retrospective/)
+37. [Sprint 25 – I am SoSa and don’t call me Shirley](/sprint-25-i-am-sosa-and-dont-call-me-shirley/)
+38. [Sprint 26 – The best laid schemes of mice and men](/sprint-26-the-best-laid-schemes-of-mice-and-men/)
+39. [Sprint 27 – Vogue, Strike a Pose](/sprint-27-vogue-strike-a-pose/)
+40. [Sprint 28 – a New Hope](/sprint-28-a-new-hope/)
+41. [I Couldn’t Think Of a Title](/i-couldnt-think-of-a-title/)
+42. [Guess who’s back, Back again!](/guess-whos-back-back-again/)
+43. [Demolition Man](/demolition-man/)
+44. [Squid James](/squid-james/)
+45. [I AM STILL ALIVE](/i-am-still-alive/)
+46. [We Didn’t Choose This Life, We’re Just Living In It](/we-didnt-choose-this-life-were-just-living-in-it/)
+47. [Let’s go!](/lets-go/)
+
+Let’s get started with the work i’ve done this time!
+
+## Login
+
+You’ll probably remember, I started working on this last sprint. I got the backend API all working but now it’s time to integrate it into the app 🙂
+
+<figure className="aligncenter size-large is-resized"><a href="/wp-content/uploads/2020/04/loginflow.png"><img src="/wp-content/uploads/2020/04/loginflow-1024x607.png" alt="Showing the login flow" width="512" height="304" /></a><figcaption>I didn’t kick him. He’s a bot.</figcaption></figure>
+
+It won’t win any design awards but it’s functional and flows nicely. I’ll continue to improve the login over the development of SoSa.
+
+### How are passwords stored?
+
+At the moment, passwords are [hashed](https://en.wikipedia.org/wiki/Cryptographic_hash_function) and then stored in the database. What’s a hash? I hear you say!
+
+When you hash a password, it turns that password into a long piece of text that can’t be reversed. For example
+
+**test12345**\
+Can become\
+**$2y$10$wduXY/tPaNmLxWl3iyCFbeskK6iJbl8hmrSocPMHtWjK.5ji6585K**
+
+Based on how much computing power the server has, we can make it more complex and typically more secure.
+
+This means, if someone gets hold of our database their chances of getting your password is very slim.
+
+For each user in our database We also add something called a salt, which also adds an additional layer of complexity to the hashing process and helps to protect against [Rainbow table based attacks](https://en.wikipedia.org/wiki/Rainbow_table).
+
+### Forgotten Password
+
+<figure className="aligncenter size-large is-resized"><a href="/wp-content/uploads/2020/04/forget_positive_flow.png"><img src="/wp-content/uploads/2020/04/forget_positive_flow-1024x607.png" alt="Positive Password Flow" width="512" height="304" /></a><figcaption>Even though I’m the only user right now, i’ve managed to forget my password</figcaption></figure>
+
+What’s the point in a login if you can’t remember your password!? Don’t worry the forgotten password flow has come to the rescue.
+
+I tried to keep this as simple as possible, again won’t win any design awards but is functional and flows really easily.
+
+You type in your e-mail, you get a reset code / link, press it and it’ll throw you back into the app and pre-fill the 6 character code. 
+
+<figure className="aligncenter size-large is-resized"><img src="/wp-content/uploads/2020/04/badforgotflow-1024x910.png" alt="Bad Forgot password flow" width="512" height="455" /><figcaption>Oppsie I did a stupid!</figcaption></figure>
+
+In the event something goes wrong, you can also type the code shown in your email into the box. Simple huh?
+
+I’ve tried to make this as secure as possible so there is only a 15 minute window to enter a new password. 
+
+Behind the scenes the pin is just a 2nd key to a 255 character token and a 100 character transient token. If an attacker doesn’t have all 3 of these (provided at different stages in the process) they won’t be able to reset your password.
+
+## Device only login
+
+Last but not least, Device logins! So… when you login it would be crazy if we stored your username and password on your device right? Right!
+
+That’s where Device management comes in.
+
+When you login, your phone sends our server a unique identifier, if your login is successful – we create a row in our database for your device and then send you back a secret key.
+
+<figure className="aligncenter size-large is-resized"><a href="/wp-content/uploads/2020/04/pasted-image-0.png"><img src="/wp-content/uploads/2020/04/pasted-image-0-1024x787.png" alt="Devices database" width="512" height="394" /></a><figcaption>Don’t worry, my-device-id isn’t a real device ID</figcaption></figure>
+
+Next time you open the app, if you don’t have a valid / active session the server will ask you for your device ID and userID. 
+
+The app will then wrap these into what’s called a JWT Token and secure it using the “secret” the server provided you when you successfully logged in.
+
+When the server receives this token, it then checks it against the secret we have stored in the database and BOOM you’re in!
+
+These “tokens” will also expire after 30 days of inactivity at which point they’ll require a full login unless you have two step set up (will be introducing that in a later sprint).
+
+## Corona Night
+
+### Tuesday – Film Amélie
+
+<figure className="aligncenter size-large is-resized"><a href="/wp-content/uploads/2020/04/download.jpg"><img src="/wp-content/uploads/2020/04/download-1024x666.jpg" alt="Amélie" width="512" height="333" /></a><figcaption>Spoon!</figcaption></figure>
+
+7:30pm BST Ricosantiago will be playing the Film Amélie!\
+\
+Join us as we follow Amélie, an innocent and naive waitress from Paris helping those around her and along the way finding love 😍
+
+### Wednesday – Disney Land
+
+<figure className="aligncenter size-large is-resized"><a href="/wp-content/uploads/2020/04/800px-Sleeping_Beauty_Castle_2019.jpg"><img src="/wp-content/uploads/2020/04/800px-Sleeping_Beauty_Castle_2019.jpg" alt="Disney land" width="600" height="450" /></a><figcaption>I’m not going to be silly about disney land because their lawyers are scary</figcaption></figure>
+
+It’s a small world after all… Ever wondered what it would be like to go to Disney land Florida with a group of SoSa peeps and view it through someone else’s go-pro? 
+
+Wonder no more! 
+
+This Wednesday at 7pm BST we’ll be taking a flight to the magic kingdom and couch rollercoastering our way through it, get your Mickey ears on and meet us in Movie chat!
+
+(Please be aware some rides contain flashing lights)
+
+# Game Night
+
+<figure className="aligncenter size-large is-resized"><a href="/wp-content/uploads/2020/04/https___cdn.evbuc_.com_images_98105346_395816135781_1_original.jpg"><img src="/wp-content/uploads/2020/04/https___cdn.evbuc_.com_images_98105346_395816135781_1_original.jpg" alt="" width="600" height="300" /></a><figcaption>Naughty terrorists!</figcaption></figure>
+
+Next [SoSa](https://sosa.net) game night we will be playing Trouble in Terrorist Town (Garry’s mod)!
+
+Sunday 19th April 1900-2100 BST / 1100-1300 PT / 1400-1600 ET
+
+We’re all Terrorists, out for world domination but some amongst us can’t be trusted and they’re killing us in the shadows!
+
+Work together to discover who the traitors are!
+
+Grab a ticket to join in! 🙂\
+\
+Tickets here: [https://www.eventbrite.co.uk/e/sosa-plays-trouble-in-terrorist-town-garrys-mod-tickets-102094246640](https://www.eventbrite.co.uk/e/sosa-plays-trouble-in-terrorist-town-garrys-mod-tickets-102094246640)
+
+**Don’t have Garry’s Mod?**
+
+Don’t have the game? Don’t worry! If you’re a regular in the community just give me a shout and i’ll give you a copy of the game. You just need steam + PC
+
+——-
+
+That’s all for this sprint folks! Hope you enjoyed reading 😊
+
+-James
